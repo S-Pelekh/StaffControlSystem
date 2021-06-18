@@ -1,7 +1,11 @@
-export const setTotalWorkers = (count) => {
-  return { type: "SET_TOTAL_WORKERS", payload: count };
+export const setUsers = (data) => {
+  return { type: "SET_USERS", payload: data };
 };
 
-export const setWorkerDetails = (id, details) => {
-  return { type: "SET_WORKER_DETAILS", payload: { id, details } };
+export const setTotalUsers = (count) => {
+  return { type: "SET_TOTAL_USERS", payload: count };
+};
+
+export const setUserDetails = (data) => {
+  return { type: "SET_USER_DETAILS", payload: [data] };
 };

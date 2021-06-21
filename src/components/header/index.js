@@ -1,15 +1,10 @@
-import ReactDOM from "react-dom";
-import { PageHeader } from "antd";
-import "../../../node_modules/antd/dist/antd";
+import { Header as HeaderStyle } from "./styled";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
-  return ReactDOM.render(
-    <PageHeader
-      className="site-page-header"
-      onBack={() => null}
-      title="Staff control"
-      subTitle=" "
-    />,
-    document.getElementById("root")
+  return (
+    <HeaderStyle>
+      <Link to="/users">Main</Link>
+    </HeaderStyle>
   );
 };

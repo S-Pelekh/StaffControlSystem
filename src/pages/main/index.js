@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 import Api from "../../helpers/api";
 import { setUsers } from "../../store/actions";
+import { Main, IconBlock } from "./styled";
+import { ReactComponent as EditIcon } from "../../assets/edit.svg";
+import { ReactComponent as DelIcon } from "../../assets/close.svg";
 
-export const MainPage = ({
-  match: {
-    params: { page },
-  },
-}) => {
+export const MainPage = () => {
   const users = useSelector((store) => store.users);
-  const userDetails = useSelector((store) => store.userDetails);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -20,26 +19,51 @@ export const MainPage = ({
       });
     }
   }, [users.length]);
-  console.log(userDetails, users);
+  console.log(users);
 
   const renderUsers = () => {
     return users.map(({ id, name, photo, salary, status }) => (
-      <div>
-        <h2>
-          {id}.{name}
-        </h2>
-        <img src={photo} alt="Phot" />
-        <p>Salary: {salary}</p>
-        <p>Status: {status}</p>
-      </div>
+      <tr>
+        <td>
+          <Link to={`/user/${id}`}>{id}</Link>
+        </td>
+        <td>
+          {" "}
+          <img src={photo} alt="Phot" />
+        </td>
+        <td>
+          <Link to={`/user/${id}`}>{name}</Link>
+        </td>
+
+        <td>{salary}</td>
+        <td>{status}</td>
+        <td>
+          <IconBlock>
+            <EditIcon />
+          </IconBlock>
+          <IconBlock>
+            <DelIcon />
+          </IconBlock>
+        </td>
+      </tr>
     ));
   };
 
   return (
-    <section>
+    <Main>
       Main page
-      <h3>Page number {page}</h3>
-      <div>{renderUsers()}</div>
-    </section>
+      <table>
+        <caption>Staff</caption>
+        <tr>
+          <th>ID</th>
+          <th>Photo</th>
+          <th>Name</th>
+          <th>Salary</th>
+          <th>Status</th>
+          <th>Edit</th>
+        </tr>
+        {renderUsers()}
+      </table>
+    </Main>
   );
 };

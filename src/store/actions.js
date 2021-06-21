@@ -1,11 +1,14 @@
-export const setUsers = (data) => {
-  return { type: "SET_USERS", payload: data };
-};
+export const setUsers = (data) => ({
+  type: "SET_USERS",
+  payload: data,
+});
 
-export const setTotalUsers = (count) => {
-  return { type: "SET_TOTAL_USERS", payload: count };
-};
+export const setTotalUsers = (count) => ({
+  type: "SET_TOTAL_USERS",
+  payload: count,
+});
 
-export const setUserDetails = (data) => {
-  return { type: "SET_USER_DETAILS", payload: [data] };
-};
+export const setUserDetails = (data) => ({
+  type: "SET_USER_DETAILS",
+  payload: data,
+});

@@ -3,16 +3,17 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { MainPage } from "./pages/main/index";
 import { UserPage } from "./pages/user page/index";
-// import { Header } from "./components/header/index";
+import { Header } from "./components/header/index";
 
 function App() {
   return (
     <Fragment>
-      {/* <Header /> */}
+      <Header />
       <Switch>
-        <Route path="/user" component={UserPage} />
-        <Route path="/main/:page" component={MainPage} />
-        <Route exact path="/" component={() => <Redirect to="/main/1" />} />
+        <Route path="/user/:id" component={UserPage} />
+        <Route path="/users" component={MainPage} />
+        <Route exact path="/" component={() => <Redirect to="/users" />} />
+        <Route component={() => <div>Not found</div>} />
       </Switch>
     </Fragment>
   );

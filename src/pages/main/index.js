@@ -19,11 +19,10 @@ export const MainPage = () => {
       });
     }
   }, [users.length]);
-  console.log(users);
 
   const renderUsers = () => {
     return users.map(({ id, name, photo, salary, status }) => (
-      <tr>
+      <tr key={`user-${id}`}>
         <td>
           <Link to={`/user/${id}`}>{id}</Link>
         </td>
@@ -51,18 +50,19 @@ export const MainPage = () => {
 
   return (
     <Main>
-      Main page
       <table>
         <caption>Staff</caption>
-        <tr>
-          <th>ID</th>
-          <th>Photo</th>
-          <th>Name</th>
-          <th>Salary</th>
-          <th>Status</th>
-          <th>Edit</th>
-        </tr>
-        {renderUsers()}
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Photo</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Status</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>{renderUsers()}</tbody>
       </table>
     </Main>
   );

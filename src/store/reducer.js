@@ -1,23 +1,35 @@
-const initialState = {
-  users: [],
-  totalUsers: 0,
-  userDetails: [],
-};
+// export const reducer = (state = initialState, action) => {
+//   if (action.type === "SET_USERS") {
+//     return { ...state, users: action.payload };
+//   }
+
+//   if (action.type === "SET_TOTAL_USERS") {
+//     return { ...state, totalUsers: action.payload };
+//   }
+
+//   if (action.type === "SET_USER_DETAILS") {
+//     const { id, details } = action.payload;
+//     return {
+//       ...state,
+//       userDetails: { ...state.userDetails, [id]: details },
+//     };
+//   }
+//   return state;
+// };
+
+import { SET_USERS, SET_USER_DETAILS, initialState } from "./actions";
 
 export const reducer = (state = initialState, action) => {
-  if (action.type === "SET_USERS") {
-    return { ...state, users: action.payload };
+  switch (action.type) {
+    case SET_USERS:
+      return { ...state, users: action.payload };
+    case SET_USER_DETAILS:
+      const { id, details } = action.payload;
+      return {
+        ...state,
+        userDetails: { ...state.userDetails, [id]: details },
+      };
+    default:
+      return state;
   }
-
-  if (action.type === "SET_TOTAL_USERS") {
-    return { ...state, totalUsers: action.payload };
-  }
-
-  if (action.type === "SET_USER_DETAILS") {
-    return {
-      ...state,
-      userDetails: action.payload,
-    };
-  }
-  return state;
 };

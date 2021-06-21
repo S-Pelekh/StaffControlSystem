@@ -11,4 +11,14 @@ export default class Api {
       }
     });
   };
+  static getUserDetails = (id) => {
+    return new Promise(async (res, rej) => {
+      const result = await fetch(`${Api.url}/people/${id}`);
+      if (result.status === 200) {
+        res(await result.json());
+      } else {
+        rej(await result.json());
+      }
+    });
+  };
 }

@@ -1,4 +1,5 @@
 import Api from "../helpers/api";
+import { useParams } from "react-router-dom";
 
 export const SET_USERS = "SET_USERS";
 export const SET_USER_DETAILS = "SET_USER_DETAILS";
@@ -23,9 +24,8 @@ export const onGetUsers = () => (dispatch) => {
     dispatch(setUsers(data));
   });
 };
-
-export const onGetUserDetails = () => (dispatch) => {
-  Api.getUserDetails(this.id).then((data) => {
-    dispatch(setUserDetails(this.id, data));
+export const onGetUserDetails = (id) => (dispatch) => {
+  Api.getUserDetails(id).then((data) => {
+    dispatch(setUserDetails(id, data));
   });
 };

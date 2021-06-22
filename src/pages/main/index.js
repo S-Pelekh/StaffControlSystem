@@ -12,6 +12,9 @@ export const MainPage = () => {
   const users = useSelector((store) => store.users);
   const dispatch = useDispatch();
   const fetch = bindActionCreators(onGetUsers, dispatch);
+  let long = users.length;
+  console.log(users.length, long);
+
   useEffect(() => {
     if (users.length === 0) {
       fetch();

@@ -1,1 +1,8 @@
-export const NewUser = () => <div>Add new user</div>;
+import { RegistrationForm } from "../../components/form/index";
+import { NewUserStyle } from "./styled";
+
+export const NewUser = () => (
+  <NewUserStyle>
+    <RegistrationForm />
+  </NewUserStyle>
+);

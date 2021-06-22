@@ -10,13 +10,13 @@ export const UserDetails = () => {
   const userDetails = useSelector((store) => store.userDetails);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const fetch = bindActionCreators(onGetUserDetails, dispatch);
+  const getUserDetails = () => onGetUserDetails(id);
+  const fetch = bindActionCreators(getUserDetails, dispatch);
   useEffect(() => {
     if (!userDetails[id]) {
-      fetch(id);
+      fetch();
     }
   }, [id]);
-  console.log(userDetails, userDetails[id]);
   if (userDetails[id]) {
     const { name, photo, position, salary, status } = userDetails[id];
 

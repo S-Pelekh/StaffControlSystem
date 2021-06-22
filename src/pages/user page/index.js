@@ -1,18 +1,19 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { bindActionCreators } from "redux";
 
-import Api from "../../helpers/api";
-import { setUserDetails } from "../../store/actions";
+import { onGetUserDetails } from "../../store/actions";
 import { UserDetailsStyle } from "./styled";
 
 export const UserDetails = () => {
   const userDetails = useSelector((store) => store.userDetails);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const fetch = bindActionCreators(onGetUserDetails, dispatch);
   useEffect(() => {
     if (!userDetails[id]) {
-      Api.getUserDetails(id).then((data) => dispatch(setUserDetails(id, data)));
+      fetch(id);
     }
   }, [id]);
   console.log(userDetails, userDetails[id]);

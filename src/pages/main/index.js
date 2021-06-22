@@ -27,7 +27,6 @@ export const MainPage = () => {
           <Link to={`/user/${id}`}>{id}</Link>
         </td>
         <td>
-          {" "}
           <img src={photo} alt="Phot" />
         </td>
         <td>

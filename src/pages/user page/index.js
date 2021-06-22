@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 
 import Api from "../../helpers/api";
 import { setUserDetails } from "../../store/actions";
 import { UserDetailsStyle } from "./styled";
 
-export const UserDetails = ({
-  match: {
-    params: { id },
-  },
-}) => {
+export const UserDetails = () => {
   const userDetails = useSelector((store) => store.userDetails);
   const dispatch = useDispatch();
+  const { id } = useParams();
   useEffect(() => {
     if (!userDetails[id]) {
       Api.getUserDetails(id).then((data) => dispatch(setUserDetails(id, data)));

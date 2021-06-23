@@ -5,6 +5,7 @@ import { MainPage } from "./pages/main/index";
 import { UserDetails } from "./pages/user page/index";
 import { Header } from "./components/header/index";
 import { NewUser } from "./pages/new user/index";
+import { EditUser } from "./pages/edit user/index";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/user/:id" component={UserDetails} />
         <Route path="/users" component={MainPage} />
         <Route exact path="/" component={() => <Redirect to="/users" />} />
+        <Route path="/edit_user/:id" component={EditUser} />
         <Route component={() => <div>Not found</div>} />
       </Switch>
     </Fragment>

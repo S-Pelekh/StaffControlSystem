@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { bindActionCreators } from "redux";
+import moment from "moment";
 
 import { onGetUserDetails } from "../../store/actions";
 import { UserDetailsStyle } from "./styled";
@@ -10,15 +11,15 @@ export const UserDetails = () => {
   const userDetails = useSelector((store) => store.userDetails);
   const dispatch = useDispatch();
   const { id } = useParams();
-  const getUserDetails = () => onGetUserDetails(id);
-  const fetch = bindActionCreators(getUserDetails, dispatch);
+  const fetch = bindActionCreators(() => onGetUserDetails(id), dispatch);
   useEffect(() => {
     if (!userDetails[id]) {
       fetch();
     }
   }, [id]);
   if (userDetails[id]) {
-    const { name, photo, position, salary, status } = userDetails[id];
+    const { name, photo, position, salary, status, entryDate } =
+      userDetails[id];
 
     return (
       <UserDetailsStyle>
@@ -35,6 +36,10 @@ export const UserDetails = () => {
           <p>
             <b>Status:</b>
             {status}
+          </p>
+          <p>
+            <b>Entry Data:</b>
+            {moment(entryDate).format("DD.MM.YYYY")}
           </p>
         </div>
       </UserDetailsStyle>

@@ -1,5 +1,4 @@
 import Api from "../helpers/api";
-import { useParams } from "react-router-dom";
 
 export const SET_USERS = "SET_USERS";
 export const SET_USER_DETAILS = "SET_USER_DETAILS";
@@ -29,3 +28,6 @@ export const onGetUserDetails = (id) => (dispatch) => {
     dispatch(setUserDetails(id, data));
   });
 };
+export const onSetNewUser = (values) => Api.setNewUser(values);
+
+export const onEditUser = (values, id) => Api.editUser(values, id);

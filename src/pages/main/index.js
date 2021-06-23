@@ -12,8 +12,6 @@ export const MainPage = () => {
   const users = useSelector((store) => store.users);
   const dispatch = useDispatch();
   const fetch = bindActionCreators(onGetUsers, dispatch);
-  let long = users.length;
-  console.log(users.length, long);
 
   useEffect(() => {
     if (users.length === 0) {
@@ -37,9 +35,12 @@ export const MainPage = () => {
         <td>{salary}</td>
         <td>{status}</td>
         <td>
-          <IconBlock>
-            <EditIcon />
-          </IconBlock>
+          <Link to={`/edit_user/${id}`}>
+            <IconBlock>
+              <EditIcon />
+            </IconBlock>
+          </Link>
+
           <IconBlock>
             <DelIcon />
           </IconBlock>

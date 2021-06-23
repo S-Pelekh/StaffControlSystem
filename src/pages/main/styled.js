@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Main = styled.section`
-  height: calc(100vh - 100px);
+  height: calc(100vh - 50px);
   background: #e0a96d;
   color: #201e20;
   padding: 20px;
@@ -12,6 +12,7 @@ export const Main = styled.section`
     border: 2px solid #201e20;
     border-collapse: collapse;
     width: 80%;
+
     tr {
       text-align: center;
       td {

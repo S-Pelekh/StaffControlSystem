@@ -1,173 +1,83 @@
 import React from "react";
-import { Form, Input, Cascader, Button, DatePicker, Checkbox } from "antd";
-import Api from "../../helpers/api";
-import "antd/dist/antd.css";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
-const status = [
-  {
-    value: "work",
-    label: "Work",
-  },
-  {
-    value: "fired",
-    label: "Fired",
-  },
-  {
-    value: "vacation",
-    label: "Vacation",
-  },
-];
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 8,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
-const config = {
-  rules: [
-    {
-      type: "object",
-      required: true,
-      message: "Please select time!",
-    },
-  ],
-};
+import { onSetNewUser } from "../../store/actions";
+import { FormStyle } from "./styled";
 
-export const RegistrationForm = () => {
-  const [form] = Form.useForm();
+const SignupSchema = Yup.object().shape({
+  name: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Enter name"),
+  position: Yup.string()
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Enter position in company"),
+  photo: Yup.string().required("Enter photo link"),
+  entryDate: Yup.date()
+    .min("2020-06-16", "Company not created yet")
+    .max(new Date(), "This is future"),
+});
 
-  const onFinish = (values) => {
-    Api.setNewUser(values);
-  };
-
+export const RegForm = () => {
   return (
-    <Form
-      {...formItemLayout}
-      form={form}
-      name="register"
-      onFinish={onFinish}
-      initialValues={{
-        residence: ["work", "fired", "vacation"],
-      }}
-      scrollToFirstError
-    >
-      <Form.Item
-        name="name"
-        label="Name Surname"
-        rules={[
-          {
-            required: true,
-          },
-        ]}
+    <FormStyle>
+      <Formik
+        initialValues={{
+          name: "",
+          photo: "",
+          position: "",
+          salary: "",
+          status: "",
+          entryDate: "",
+        }}
+        validateOnBlur
+        validationSchema={SignupSchema}
+        onSubmit={(values) => onSetNewUser(values)}
       >
-        <Input />
-      </Form.Item>
-      <Form.Item
-        name="photo"
-        label="Photo"
-        rules={[
-          {
-            required: true,
-            message: "Please input link to your Photo!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+        {({ errors, touched, isSubmitting }) => (
+          <Form>
+            <label htmlFor={"name"}>Name Surname:</label>
+            <Field type="name" name="name" />
+            <ErrorMessage name="name" component="div" />
+            <br />
+            <label htmlFor={"photo"}>Photo:</label>
+            <Field type="url" name="photo" />
+            {errors.photo && touched.photo ? <div>{errors.photo}</div> : null}
+            <br />
+            <label htmlFor={"position"}>Position:</label>
+            <Field type="text" name="position" />
+            <ErrorMessage name="position" component="div" />
+            <br />
+            <label htmlFor={"salary"}>Salary:</label>
+            <Field type="number" name="salary" />
 
-      <Form.Item
-        name="position"
-        label="Position in company"
-        tooltip="What is user position in company?"
-        rules={[
-          {
-            required: true,
-            message: "Please input user position in company!",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="salary"
-        label="Salary"
-        rules={[
-          {
-            required: true,
-            message: "Please input user Salary!",
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
-
-      <Form.Item
-        name="status"
-        label="Status"
-        rules={[
-          {
-            type: "array",
-            required: true,
-            message: "Please select your Status!",
-          },
-        ]}
-      >
-        <Cascader
-          options={status}
-          style={{
-            width: "60%",
-          }}
-        />
-      </Form.Item>
-      <Form.Item name="date-picker" label="DatePicker" {...config}>
-        <DatePicker />
-      </Form.Item>
-      <Form.Item
-        name="agreement"
-        valuePropName="checked"
-        rules={[
-          {
-            validator: (_, value) =>
-              value
-                ? Promise.resolve()
-                : Promise.reject(new Error("Should accept agreement")),
-          },
-        ]}
-        {...tailFormItemLayout}
-      >
-        <Checkbox>I accept to add new user</Checkbox>
-      </Form.Item>
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Add User
-        </Button>
-      </Form.Item>
-    </Form>
+            <div id="my-radio-group">Status:</div>
+            <div role="group" aria-labelledby="my-radio-group">
+              <label>
+                <Field type="radio" name="status" value="work" />
+                Work
+              </label>
+              <label>
+                <Field type="radio" name="status" value="fired" />
+                Fired
+              </label>
+              <label>
+                <Field type="radio" name="status" value="vacation" />
+                Vacation
+              </label>
+            </div>
+            <label htmlFor={"enterDate"}>Enter date:</label>
+            <Field type="date" name="entryDate" />
+            <ErrorMessage name="entryDate" component="div" />
+            <br />
+            <button type="submit" disabled={isSubmitting}>
+              Add User
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </FormStyle>
   );
 };

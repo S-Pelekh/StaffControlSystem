@@ -35,18 +35,19 @@ export const EditUser = () => {
     }
   }, [id]);
   if (userDetails[id]) {
-    const { name, photo, position, salary } = userDetails[id];
+    const { name, photo, position, salary, status, entryDate } =
+      userDetails[id];
     return (
       <EditUserStyle>
         <FormStyle>
           <Formik
             initialValues={{
-              name: "",
-              photo: "",
-              position: "",
-              salary: "",
-              status: "",
-              entryDate: "",
+              name: `${name}`,
+              photo: `${photo}`,
+              position: `${position}`,
+              salary: `${salary}`,
+              status: `${status}`,
+              entryDate: `${entryDate}`,
             }}
             validateOnBlur
             validationSchema={SignupSchema}
@@ -55,34 +56,24 @@ export const EditUser = () => {
             {({ errors, touched, isSubmitting }) => (
               <Form>
                 <label htmlFor={"name"}>Name Surname:</label>
-                <Field
-                  name="name"
-                  render={({ field }) => (
-                    <input {...field} type="text" placeholder={name} />
-                  )}
-                />
+                <Field type="text" name="name" />
                 <ErrorMessage name="name" component="div" />
                 <br />
 
                 <label htmlFor={"photo"}>Photo:</label>
-                <Field
-                  name="photo"
-                  render={({ field }) => (
-                    <input {...field} type="url" value={photo} />
-                  )}
-                />
+                <Field type="url" name="photo" />
                 {errors.photo && touched.photo ? (
                   <div>{errors.photo}</div>
                 ) : null}
                 <br />
 
                 <label htmlFor={"position"}>Position:</label>
-                <Field type="text" name="position" placeholder={position} />
+                <Field type="text" name="position" />
                 <ErrorMessage name="position" component="div" />
                 <br />
 
                 <label htmlFor={"salary"}>Salary:</label>
-                <Field type="number" name="salary" placeholder={salary} />
+                <Field type="number" name="salary" />
                 <div id="my-radio-group">Status:</div>
                 <div role="group" aria-labelledby="my-radio-group">
                   <label>
@@ -98,9 +89,9 @@ export const EditUser = () => {
                     Vacation
                   </label>
                 </div>
-                {/* <label htmlFor={"enterDate"}>Enter date:</label>
+                <label htmlFor={"enterDate"}>Enter date:</label>
                 <Field type="date" name="entryDate" />
-                <ErrorMessage name="entryDate" component="div" /> */}
+                <ErrorMessage name="entryDate" component="div" />
                 <br />
                 <button type="submit" disabled={isSubmitting}>
                   Edit!

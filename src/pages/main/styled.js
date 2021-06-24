@@ -8,6 +8,7 @@ export const Main = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   table {
     border: 2px solid #201e20;
     border-collapse: collapse;
@@ -26,6 +27,11 @@ export const Main = styled.section`
         }
       }
     }
+  }
+  > input {
+    position: absolute;
+    left: 900px;
+    top: 30px;
   }
 `;
 

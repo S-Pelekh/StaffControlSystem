@@ -10,7 +10,7 @@ export const reducer = (state = initialState, action) => {
     case SET_USERS:
       return { ...state, users: action.payload };
     case SET_TOTAL_USERS:
-      return { ...state, count: action.payload };
+      return { ...state, totalUsers: action.payload };
     case SET_USER_DETAILS:
       const { id, details } = action.payload;
       return {

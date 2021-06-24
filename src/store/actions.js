@@ -31,3 +31,7 @@ export const onGetUserDetails = (id) => (dispatch) => {
 export const onSetNewUser = (values) => Api.setNewUser(values);
 
 export const onEditUser = (values, id) => Api.editUser(values, id);
+
+export const onRemoveUser = (id) => {
+  Api.removeUser(id);
+};

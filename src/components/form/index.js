@@ -34,7 +34,9 @@ export const RegForm = () => {
         }}
         validateOnBlur
         validationSchema={SignupSchema}
-        onSubmit={(values) => onSetNewUser(values)}
+        onSubmit={(values) => {
+          onSetNewUser(values);
+        }}
       >
         {({ errors, touched, isSubmitting }) => (
           <Form>
@@ -52,7 +54,7 @@ export const RegForm = () => {
             <br />
             <label htmlFor={"salary"}>Salary:</label>
             <Field type="number" name="salary" />
-
+            <ErrorMessage name="salary " component="div" />
             <div id="my-radio-group">Status:</div>
             <div role="group" aria-labelledby="my-radio-group">
               <label>

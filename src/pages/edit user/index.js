@@ -6,7 +6,11 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import { FormStyle } from "../../components/form/styled";
 import * as Yup from "yup";
 
-import { onGetUserDetails, onEditUser } from "../../store/actions";
+import {
+  onGetUserDetails,
+  onEditUser,
+  setUserDetails,
+} from "../../store/actions";
 import { EditUserStyle } from "./styled";
 
 const SignupSchema = Yup.object().shape({
@@ -21,7 +25,8 @@ const SignupSchema = Yup.object().shape({
   photo: Yup.string().required("Enter photo link"),
   entryDate: Yup.date()
     .min("2020-06-16", "Company not created yet")
-    .max(new Date(), "This is future"),
+    .max(new Date(), "This is future")
+    .required("Enter date"),
 });
 
 export const EditUser = () => {
@@ -51,7 +56,11 @@ export const EditUser = () => {
             }}
             validateOnBlur
             validationSchema={SignupSchema}
-            onSubmit={(values) => console.log(values, +id)}
+            onSubmit={(values) => {
+              onEditUser(values, +id);
+              dispatch(setUserDetails(+id, values));
+              console.log(values, +id);
+            }}
           >
             {({ errors, touched, isSubmitting }) => (
               <Form>

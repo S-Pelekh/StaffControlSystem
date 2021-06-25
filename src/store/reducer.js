@@ -3,6 +3,8 @@ import {
   SET_USER_DETAILS,
   ON_SEARCH,
   SET_STATUS_SORT,
+  SET_SALARY_MIN,
+  SET_SALARY_MAX,
   initialState,
 } from "./actions";
 
@@ -14,6 +16,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, keyWords: action.payload };
     case SET_STATUS_SORT:
       return { ...state, statusSort: action.payload };
+    case SET_SALARY_MIN:
+      return { ...state, salaryMin: action.payload };
+    case SET_SALARY_MAX:
+      return { ...state, salaryMax: action.payload };
     case SET_USER_DETAILS:
       const { id, details } = action.payload;
       return {

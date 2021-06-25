@@ -16,7 +16,7 @@ export const UserDetails = () => {
     if (!userDetails[id]) {
       fetch();
     }
-  }, [id]);
+  }, [userDetails]);
   if (userDetails[id]) {
     const { name, photo, position, salary, status, entryDate } =
       userDetails[id];

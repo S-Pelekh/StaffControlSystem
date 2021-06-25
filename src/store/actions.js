@@ -4,14 +4,26 @@ export const SET_USERS = "SET_USERS";
 export const SET_USER_DETAILS = "SET_USER_DETAILS";
 export const ON_SEARCH = "ON_SEARCH";
 export const SET_STATUS_SORT = "SET_STATUS_SORT";
+export const SET_SALARY_MIN = "SET_SALARY_MIN";
+export const SET_SALARY_MAX = "SET_SALARY_MAX";
 
 export const initialState = {
   users: [],
   userDetails: {},
   keyWords: "",
   statusSort: "all",
+  salaryMin: "",
+  salaryMax: "",
 };
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
+export const setSalaryMin = (count) => ({
+  type: SET_SALARY_MIN,
+  payload: count,
+});
+export const setSalaryMax = (count) => ({
+  type: SET_SALARY_MAX,
+  payload: count,
+});
 export const onSearch = (str) => ({
   type: ON_SEARCH,
   payload: str,
@@ -33,7 +45,9 @@ export const onGetUserDetails = (id) => (dispatch) => {
 };
 export const onSetNewUser = (values) => Api.setNewUser(values);
 
-export const onEditUser = (values, id) => Api.editUser(values, id);
+export const onEditUser = (values, id) => {
+  Api.editUser(values, id);
+};
 
 export const onRemoveUser = (id) => {
   Api.removeUser(id);

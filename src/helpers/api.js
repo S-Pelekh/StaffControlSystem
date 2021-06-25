@@ -30,7 +30,7 @@ export default class Api {
           "Content-type": "application/json; charset=UTF-8",
         },
       });
-      if (result.status === 200) {
+      if (result.status === 201) {
         res(await result.json());
       } else {
         rej(await result.json());

@@ -25,12 +25,14 @@ export const MainPage = () => {
 
   return (
     <Main>
-      <input
-        type="text"
-        placeholder="Input name"
-        value={keyWords}
-        onChange={(el) => dispatch(onSearch(el.target.value))}
-      />
+      <div>
+        <input
+          type="text"
+          placeholder="Input name"
+          value={keyWords}
+          onChange={(el) => dispatch(onSearch(el.target.value))}
+        />
+      </div>
       <table>
         <caption>Staff</caption>
         <thead>

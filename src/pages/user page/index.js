@@ -6,6 +6,7 @@ import moment from "moment";
 
 import { onGetUserDetails } from "../../store/actions";
 import { UserDetailsStyle } from "./styled";
+import { Loader } from "../../components/loader/index";
 
 export const UserDetails = () => {
   const userDetails = useSelector((store) => store.userDetails);
@@ -45,6 +46,6 @@ export const UserDetails = () => {
       </UserDetailsStyle>
     );
   } else {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 };

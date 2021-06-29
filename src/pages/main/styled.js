@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Main = styled.section`
   height: 100vh;
   width: 1200;
-  background: #e0a96d;
+  background: #7e939f;
   color: #201e20;
   padding: 20px;
   display: flex;

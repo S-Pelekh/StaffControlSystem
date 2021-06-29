@@ -8,13 +8,11 @@ import { ReactComponent as EditIcon } from "../../assets/edit.svg";
 import { ReactComponent as DelIcon } from "../../assets/close.svg";
 
 export default function TableRaw(users) {
-  //   const dispatch = useDispatch();
-  //   const { id, photo, name, salary, status } = users;
+  const dispatch = useDispatch();
   const delUser = (users, id) => {
-    // const index = users.findIndex((el) => el.id === id);
-    console.log(users, ...arguments);
-    // users.splice(index, 1);
-    // dispatch(setUsers(users));
+    const index = users.findIndex((el) => el.id === id);
+    users.splice(index, 1);
+    dispatch(setUsers(users));
   };
   return (
     <tr key={`user-${users.id}`}>

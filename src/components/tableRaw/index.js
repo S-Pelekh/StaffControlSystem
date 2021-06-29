@@ -7,30 +7,31 @@ import { IconBlock } from "../../pages/main/styled";
 import { ReactComponent as EditIcon } from "../../assets/edit.svg";
 import { ReactComponent as DelIcon } from "../../assets/close.svg";
 
-export const TableRaw = (users) => {
-  const dispatch = useDispatch();
-  const { id, photo, name, salary, status } = users;
+export default function TableRaw(users) {
+  //   const dispatch = useDispatch();
+  //   const { id, photo, name, salary, status } = users;
   const delUser = (users, id) => {
-    const index = users.findIndex((el) => el.id === id);
-    users.splice(index, 1);
-    dispatch(setUsers(users));
+    // const index = users.findIndex((el) => el.id === id);
+    console.log(users, ...arguments);
+    // users.splice(index, 1);
+    // dispatch(setUsers(users));
   };
   return (
-    <tr key={`user-${id}`}>
+    <tr key={`user-${users.id}`}>
       <td>
-        <Link to={`/user/${id}`}>{id}</Link>
+        <Link to={`/user/${users.id}`}>{users.id}</Link>
       </td>
       <td>
-        <img src={photo} alt="Phot" />
+        <img src={users.photo} alt="Phot" />
       </td>
       <td>
-        <Link to={`/user/${id}`}>{name}</Link>
+        <Link to={`/user/${users.id}`}>{users.name}</Link>
       </td>
 
-      <td>{salary}</td>
-      <td>{status}</td>
+      <td>{users.salary}</td>
+      <td>{users.status}</td>
       <td>
-        <Link to={`/edit_user/${id}`}>
+        <Link to={`/edit_user/${users.id}`}>
           <IconBlock>
             <EditIcon />
           </IconBlock>
@@ -39,8 +40,8 @@ export const TableRaw = (users) => {
       <td>
         <button
           onClick={() => {
-            onRemoveUser(id);
-            delUser(users, id);
+            // onRemoveUser(users.id);
+            delUser(users, users.id);
           }}
         >
           <IconBlock>
@@ -50,4 +51,4 @@ export const TableRaw = (users) => {
       </td>
     </tr>
   );
-};
+}

@@ -10,48 +10,40 @@ export default function RenderUsers() {
   const statusSort = useSelector((store) => store.statusSort);
 
   if (!keyWords && statusSort === "all") {
-    return users.map((users) => {
-      if (users.salary >= salaryMin && !salaryMax) {
-        return TableRaw(users);
-      } else if (users.salary >= salaryMin && users.salary <= salaryMax) {
-        return TableRaw(users);
-      }
-    });
+    return users
+      .filter(
+        (el) =>
+          (el.salary >= salaryMin && !salaryMax) ||
+          (el.salary >= salaryMin && el.salary <= salaryMax)
+      )
+      .map((users) => TableRaw(users));
   } else if (!keyWords && statusSort !== "all") {
     return users
-      .filter((el) =>
-        el.status.toLowerCase().includes(statusSort.toLowerCase())
+      .filter(
+        (el) =>
+          el.status.toLowerCase().includes(statusSort.toLowerCase()) &&
+          ((el.salary >= salaryMin && !salaryMax) ||
+            (el.salary >= salaryMin && el.salary <= salaryMax))
       )
-      .map((users) => {
-        if (users.salary >= salaryMin && !salaryMax) {
-          return TableRaw(users);
-        } else if (users.salary >= salaryMin && users.salary <= salaryMax) {
-          return TableRaw(users);
-        }
-      });
+      .map((users) => TableRaw(users));
   } else if (keyWords && statusSort !== "all") {
     return users
       .filter(
         (el) =>
           el.name.toLowerCase().includes(keyWords.toLowerCase()) &&
-          el.status.toLowerCase().includes(statusSort.toLowerCase())
+          el.status.toLowerCase().includes(statusSort.toLowerCase()) &&
+          ((el.salary >= salaryMin && !salaryMax) ||
+            (el.salary >= salaryMin && el.salary <= salaryMax))
       )
-      .map((users) => {
-        if (users.salary >= salaryMin && !salaryMax) {
-          return TableRaw(users);
-        } else if (users.salary >= salaryMin && users.salary <= salaryMax) {
-          return TableRaw(users);
-        }
-      });
+      .map((users) => TableRaw(users));
   } else {
     return users
-      .filter((el) => el.name.toLowerCase().includes(keyWords.toLowerCase()))
-      .map((users) => {
-        if (users.salary >= salaryMin && !salaryMax) {
-          return TableRaw(users);
-        } else if (users.salary >= salaryMin && users.salary <= salaryMax) {
-          return TableRaw(users);
-        }
-      });
+      .filter(
+        (el) =>
+          el.name.toLowerCase().includes(keyWords.toLowerCase()) &&
+          ((el.salary >= salaryMin && !salaryMax) ||
+            (el.salary >= salaryMin && el.salary <= salaryMax))
+      )
+      .map((users) => TableRaw(users));
   }
 }

@@ -38,7 +38,7 @@ export const EditUser = () => {
     if (!userDetails[id]) {
       fetch();
     }
-  }, [id]);
+  }, [userDetails]);
   if (userDetails[id]) {
     const { name, photo, position, salary, status, entryDate } =
       userDetails[id];
@@ -59,7 +59,6 @@ export const EditUser = () => {
             onSubmit={(values) => {
               onEditUser(values, +id);
               dispatch(setUserDetails(+id, values));
-              console.log(values, +id);
             }}
           >
             {({ errors, touched, isSubmitting }) => (

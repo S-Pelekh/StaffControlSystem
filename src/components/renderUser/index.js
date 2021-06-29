@@ -6,8 +6,9 @@ import { onRemoveUser, setUsers } from "../../store/actions";
 import { IconBlock } from "../../pages/main/styled";
 import { ReactComponent as EditIcon } from "../../assets/edit.svg";
 import { ReactComponent as DelIcon } from "../../assets/close.svg";
+import { TableRaw } from "../tableRaw";
 
-export const RenderUsers = () => {
+export default function RenderUsers() {
   const users = useSelector((store) => store.users);
   const keyWords = useSelector((store) => store.keyWords);
   const salaryMin = useSelector((store) => store.salaryMin);
@@ -20,7 +21,7 @@ export const RenderUsers = () => {
     dispatch(setUsers(users));
   };
   if (!keyWords && statusSort === "all") {
-    return users.map(({ id, name, photo, salary, status }) => {
+    return users.map(({ id, photo, name, salary, status }) => {
       if (salary >= salaryMin && !salaryMax) {
         return (
           <tr key={`user-${id}`}>
@@ -100,7 +101,7 @@ export const RenderUsers = () => {
       .filter((el) =>
         el.status.toLowerCase().includes(statusSort.toLowerCase())
       )
-      .map(({ id, name, photo, salary, status }) => {
+      .map(({ id, photo, name, salary, status }) => {
         if (salary >= salaryMin && !salaryMax) {
           return (
             <tr key={`user-${id}`}>
@@ -182,7 +183,7 @@ export const RenderUsers = () => {
           el.name.toLowerCase().includes(keyWords.toLowerCase()) &&
           el.status.toLowerCase().includes(statusSort.toLowerCase())
       )
-      .map(({ id, name, photo, salary, status }) => {
+      .map(({ id, photo, name, salary, status }) => {
         if (salary >= salaryMin && !salaryMax) {
           return (
             <tr key={`user-${id}`}>
@@ -260,7 +261,7 @@ export const RenderUsers = () => {
   } else {
     return users
       .filter((el) => el.name.toLowerCase().includes(keyWords.toLowerCase()))
-      .map(({ id, name, photo, salary, status }) => {
+      .map(({ id, photo, name, salary, status }) => {
         if (salary >= salaryMin && !salaryMax) {
           return (
             <tr key={`user-${id}`}>
@@ -336,4 +337,4 @@ export const RenderUsers = () => {
         }
       });
   }
-};
+}

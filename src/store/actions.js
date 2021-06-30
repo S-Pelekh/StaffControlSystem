@@ -6,6 +6,7 @@ export const ON_SEARCH = "ON_SEARCH";
 export const SET_STATUS_SORT = "SET_STATUS_SORT";
 export const SET_SALARY_MIN = "SET_SALARY_MIN";
 export const SET_SALARY_MAX = "SET_SALARY_MAX";
+export const SET_TOGGLE_CLASS = "SET_TOGGLE_CLASS";
 
 export const initialState = {
   users: [],
@@ -14,6 +15,7 @@ export const initialState = {
   statusSort: "all",
   salaryMin: "",
   salaryMax: "",
+  toggleClass: false,
 };
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
 export const setSalaryMin = (count) => ({
@@ -29,6 +31,10 @@ export const onSearch = (str) => ({
   payload: str,
 });
 export const onStatusSort = (str) => ({ type: SET_STATUS_SORT, payload: str });
+export const setToggleClass = (val) => ({
+  type: SET_TOGGLE_CLASS,
+  payload: val,
+});
 export const setUserDetails = (id, details) => ({
   type: SET_USER_DETAILS,
   payload: { id, details },

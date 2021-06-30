@@ -10,6 +10,8 @@ import { SearchInput } from "../../components/searchInput/index";
 import { SalaryFilter } from "../../components/salaryFilter/index";
 import { StatusFilter } from "../../components/statusFilter/index";
 import { Button } from "../../components/ui-kit/styled";
+import { ReactComponent as CrossIcon } from "../../assets/cross.svg";
+import { EmtyCard } from "../../components/ui-kit/styled";
 
 export const MainPage = () => {
   const totalUsers = useSelector((store) => store.users.length);
@@ -23,11 +25,18 @@ export const MainPage = () => {
   return (
     <Main>
       <SearchInput />
-      <Link to="/new_user">
-        <Button>Add User</Button>
-      </Link>
-      <div>
+      <div className="newUserLink">
+        <Link to="/new_user">
+          <Button>
+            <CrossIcon />
+            Добавить сотрудника
+          </Button>
+        </Link>
+      </div>
+      <div className="usersBlock">
         <RenderUsers />
+        <EmtyCard />
+        <EmtyCard />
       </div>
     </Main>
   );

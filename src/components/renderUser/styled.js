@@ -9,27 +9,77 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  padding: 15px 19px;
   margin-bottom: 30px;
-  > div:first-child {
+  position: relative;
+  .cardButtons {
+    width: 230px;
     display: flex;
     flex-direction: row;
     align-content: space-between;
     justify-content: space-between;
+    position: absolute;
   }
-  > div {
+  .userInfo {
+    width: 230px;
+    height: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    svg {
-      width: 20px;
-      height: 20px;
+    align-items: center;
+    text-transform: uppercase;
+    color: #f3eaea;
+    .usernameBlock,
+    .salaryBlock,
+    .positionBlock,
+    .statusBlock {
+      width: 230px;
+      margin-bottom: 19px;
+      > div {
+        width: 120px;
+        a {
+          font-weight: bold;
+          font-size: 24px;
+          line-height: 21px;
+          color: #f3eaea;
+        }
+      }
     }
+    .salaryBlock {
+      font-size: 24px;
+    }
+    .statusBlock {
+      > div {
+        width: fit-content;
 
+        border-radius: 10px;
+        padding: 5px 19px;
+        font-size: 12px;
+      }
+      .workBlock {
+        background: #73b469;
+      }
+      .vacationBlock {
+        background: #e4a648;
+      }
+      .firedBlock {
+        background: #c05e5e;
+      }
+    }
+    .dateBlock {
+      margin-top: 44px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+    svg {
+      width: 31px;
+      height: 31px;
+    }
     img {
       width: 110px;
       height: 110px;
       border-radius: 50%;
+      margin-top: 19px;
+      margin-bottom: 24px;
     }
   }
 `;

@@ -5,6 +5,10 @@ export const SearchStyled = styled.div`
   height: 50px;
   background: #2d2f44;
   border-radius: 25px;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  margin-bottom: 22px;
   > input {
     width: 865.35px;
     height: 30px;
@@ -14,5 +18,6 @@ export const SearchStyled = styled.div`
   > svg {
     width: 25px;
     height: 25px;
+    margin: 3px 6px 2px;
   }
 `;

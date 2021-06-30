@@ -30,21 +30,22 @@ export default function RenderUsers() {
       )
       .map((users) => (
         <Card key={`user-${users.id}`}>
-          <div>
+          <div className="cardButtons">
             <div>
               <Link to={`/edit_user/${users.id}`}>
                 <EditIcon />
               </Link>
             </div>
             <div>
-              <button
+              <Link
+                to="/del_user"
                 onClick={() => {
                   onRemoveUser(users.id);
                   delUser(users, users.id);
                 }}
               >
                 <DelIcon />
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -68,14 +69,15 @@ export default function RenderUsers() {
               </Link>
             </div>
             <div>
-              <button
+              <Link
+                to="/del_user"
                 onClick={() => {
                   onRemoveUser(users.id);
                   delUser(users, users.id);
                 }}
               >
                 <DelIcon />
-              </button>
+              </Link>
             </div>
           </div>
           {UserCard(users)}
@@ -99,14 +101,15 @@ export default function RenderUsers() {
               </Link>
             </div>
             <div>
-              <button
+              <Link
+                to="/del_user"
                 onClick={() => {
                   onRemoveUser(users.id);
                   delUser(users, users.id);
                 }}
               >
                 <DelIcon />
-              </button>
+              </Link>
             </div>
           </div>
           {UserCard(users)}
@@ -126,14 +129,15 @@ export default function RenderUsers() {
             <Link to={`/edit_user/${users.id}`}>
               <EditIcon />
             </Link>
-            <button
+            <Link
+              to="/del_user"
               onClick={() => {
                 onRemoveUser(users.id);
                 delUser(users, users.id);
               }}
             >
               <DelIcon />
-            </button>
+            </Link>
           </div>
           {UserCard(users)}
         </Card>

@@ -3,14 +3,12 @@ import { Switch, Route, Redirect } from "react-router-dom";
 
 import { MainPage } from "./pages/main/index";
 import { UserDetails } from "./pages/user page/index";
-import { Header } from "./components/header/index";
 import { NewUser } from "./pages/new user/index";
 import { EditUser } from "./pages/edit user/index";
 
 function App() {
   return (
     <Fragment>
-      <Header />
       <Switch>
         <Route path="/new_user" component={NewUser} />
         <Route path="/user/:id" component={UserDetails} />

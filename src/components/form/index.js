@@ -1,9 +1,12 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { Link } from "react-router-dom";
 
 import { onSetNewUser } from "../../store/actions";
 import { FormStyle } from "./styled";
+import { Button } from "../ui-kit/styled";
+import { ReactComponent as BackIcon } from "../../assets/back.svg";
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,6 +26,11 @@ const SignupSchema = Yup.object().shape({
 export const RegForm = () => {
   return (
     <FormStyle>
+      <Link to="/users">
+        <div className="backIcon">
+          <BackIcon />
+        </div>
+      </Link>
       <Formik
         initialValues={{
           name: "",
@@ -40,43 +48,37 @@ export const RegForm = () => {
       >
         {({ errors, touched, isSubmitting }) => (
           <Form>
-            <label htmlFor={"name"}>Name Surname:</label>
+            <h3>СОЗДАНИЕ</h3>
+            <label htmlFor={"name"}>ИМЯ</label>
+
             <Field type="name" name="name" />
             <ErrorMessage name="name" component="div" />
             <br />
-            <label htmlFor={"photo"}>Photo:</label>
+            <label htmlFor={"photo"}>ФОТОГРАФИЯ</label>
             <Field type="url" name="photo" />
             {errors.photo && touched.photo ? <div>{errors.photo}</div> : null}
             <br />
-            <label htmlFor={"position"}>Position:</label>
+            <label htmlFor={"position"}>ДОЛЖНОСТЬ</label>
             <Field type="text" name="position" />
             <ErrorMessage name="position" component="div" />
             <br />
-            <label htmlFor={"salary"}>Salary:</label>
+            <label htmlFor={"salary"}>ЗАРПЛАТА</label>
             <Field type="number" name="salary" />
             <ErrorMessage name="salary " component="div" />
-            <div id="my-radio-group">Status:</div>
-            <div role="group" aria-labelledby="my-radio-group">
-              <label>
-                <Field type="radio" name="status" value="work" />
-                Work
-              </label>
-              <label>
-                <Field type="radio" name="status" value="fired" />
-                Fired
-              </label>
-              <label>
-                <Field type="radio" name="status" value="vacation" />
-                Vacation
-              </label>
-            </div>
-            <label htmlFor={"enterDate"}>Enter date:</label>
+            <label htmlFor={"status"}>СТАТУС</label>
+            <Field as="select" name="status">
+              <option value="work">Work</option>
+              <option value="vacation">Vacation</option>
+              <option value="fired">Fired</option>
+            </Field>
+
+            <label htmlFor={"enterDate"}>ДАТА НАЧАЛА РАБОТЫ</label>
             <Field type="date" name="entryDate" />
             <ErrorMessage name="entryDate" component="div" />
             <br />
-            <button type="submit" disabled={isSubmitting}>
-              Add User
-            </button>
+            <Button type="submit" disabled={isSubmitting}>
+              СОЗДАТЬ
+            </Button>
           </Form>
         )}
       </Formik>

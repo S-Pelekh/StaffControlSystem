@@ -12,7 +12,7 @@ export const SearchInput = () => {
     <SearchStyled>
       <input
         type="text"
-        placeholder="Input name"
+        placeholder="Введите имя сотрудника"
         value={keyWords}
         onChange={(el) => dispatch(onSearch(el.target.value))}
       />

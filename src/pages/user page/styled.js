@@ -14,19 +14,4 @@ export const UserDetailsStyle = styled.section`
       height: 200px;
     }
   }
-  .shadow {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.3);
-    top: 0;
-    left: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.2s ease-in-out;
-  }
-  .shadow.show {
-    visibility: visible;
-    opacity: 1;
-  }
 `;

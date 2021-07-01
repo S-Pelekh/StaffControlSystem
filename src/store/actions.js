@@ -7,6 +7,8 @@ export const SET_STATUS_SORT = "SET_STATUS_SORT";
 export const SET_SALARY_MIN = "SET_SALARY_MIN";
 export const SET_SALARY_MAX = "SET_SALARY_MAX";
 export const SET_TOGGLE_CLASS = "SET_TOGGLE_CLASS";
+export const SET_MODAL_CLASS = "SET_MODAL_CLASS";
+export const SET_DEL_ITEM_ID = "SET_DEL_ITEM_ID";
 
 export const initialState = {
   users: [],
@@ -16,6 +18,8 @@ export const initialState = {
   salaryMin: "",
   salaryMax: "",
   toggleClass: false,
+  delItemId: "",
+  modalClass: false,
 };
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
 export const setSalaryMin = (count) => ({
@@ -26,6 +30,10 @@ export const setSalaryMax = (count) => ({
   type: SET_SALARY_MAX,
   payload: count,
 });
+export const setDelItemId = (count) => ({
+  type: SET_DEL_ITEM_ID,
+  payload: count,
+});
 export const onSearch = (str) => ({
   type: ON_SEARCH,
   payload: str,
@@ -33,6 +41,10 @@ export const onSearch = (str) => ({
 export const onStatusSort = (str) => ({ type: SET_STATUS_SORT, payload: str });
 export const setToggleClass = (val) => ({
   type: SET_TOGGLE_CLASS,
+  payload: val,
+});
+export const setModalClass = (val) => ({
+  type: SET_MODAL_CLASS,
   payload: val,
 });
 export const setUserDetails = (id, details) => ({

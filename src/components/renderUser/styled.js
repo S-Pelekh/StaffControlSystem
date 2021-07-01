@@ -36,11 +36,13 @@ export const Card = styled.div`
       margin-bottom: 19px;
       > div {
         width: 120px;
-        a {
+        p {
           font-weight: bold;
-          font-size: 24px;
-          line-height: 21px;
+          font-size: 18px;
           color: #f3eaea;
+          span {
+            font-size: 24px;
+          }
         }
       }
     }

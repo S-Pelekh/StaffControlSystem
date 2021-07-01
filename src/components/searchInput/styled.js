@@ -14,6 +14,8 @@ export const SearchStyled = styled.div`
     height: 30px;
     background: #fdfafa;
     border-radius: 15px;
+    padding: 10px;
+    outline: none;
   }
   > svg {
     width: 25px;

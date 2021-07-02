@@ -8,6 +8,10 @@ import {
   SET_TOGGLE_CLASS,
   SET_MODAL_CLASS,
   SET_DEL_ITEM_ID,
+  SET_ITEMS_PER_PAGE,
+  SET_WORK_STATUS,
+  SET_VACATION_STATUS,
+  SET_FIRED_STATUS,
   initialState,
 } from "./actions";
 
@@ -23,12 +27,20 @@ export const reducer = (state = initialState, action) => {
       return { ...state, modalClass: action.payload };
     case SET_STATUS_SORT:
       return { ...state, statusSort: action.payload };
+    case SET_WORK_STATUS:
+      return { ...state, workStatus: action.payload };
+    case SET_VACATION_STATUS:
+      return { ...state, vacationStatus: action.payload };
+    case SET_FIRED_STATUS:
+      return { ...state, firedStatus: action.payload };
     case SET_SALARY_MIN:
       return { ...state, salaryMin: action.payload };
     case SET_SALARY_MAX:
       return { ...state, salaryMax: action.payload };
     case SET_DEL_ITEM_ID:
       return { ...state, delItemId: action.payload };
+    case SET_ITEMS_PER_PAGE:
+      return { ...state, itemsPerPage: action.payload };
     case SET_USER_DETAILS:
       const { id, details } = action.payload;
       return {

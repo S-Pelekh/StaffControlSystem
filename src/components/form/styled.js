@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const FormStyle = styled.div`
   width: 609px;
-  height: 736px;
+  height: fit-content;
   background: #2d2f44;
   border-radius: 20px;
   color: #fffbfb;
@@ -13,6 +13,13 @@ export const FormStyle = styled.div`
   justify-content: center;
   padding: 38px;
   position: relative;
+  .errors {
+    color: red;
+  }
+  a {
+    color: #fffbfb;
+  }
+
   .backIcon {
     width: 78px;
     height: 78px;
@@ -38,11 +45,22 @@ export const FormStyle = styled.div`
       height: 37px;
       background: #fdf7f7;
       border-radius: 15px;
+      outline: none;
+    }
+    select {
+      appearance: none;
+      background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png")
+        no-repeat right #fdf7f7;
+
+      background-position-x: 290px;
     }
 
     button {
       width: 100%;
       justify-content: center;
+    }
+    button:disabled {
+      background: #c05e5e;
     }
   }
 `;

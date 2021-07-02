@@ -9,17 +9,25 @@ export const SET_SALARY_MAX = "SET_SALARY_MAX";
 export const SET_TOGGLE_CLASS = "SET_TOGGLE_CLASS";
 export const SET_MODAL_CLASS = "SET_MODAL_CLASS";
 export const SET_DEL_ITEM_ID = "SET_DEL_ITEM_ID";
+export const SET_ITEMS_PER_PAGE = "SET_ITEMS_PER_PAGE";
+export const SET_WORK_STATUS = "SET_WORK_STATUS";
+export const SET_VACATION_STATUS = "SET_VACATION_STATUS";
+export const SET_FIRED_STATUS = `SET_FIRED_STATUS`;
 
 export const initialState = {
   users: [],
   userDetails: {},
   keyWords: "",
-  statusSort: "all",
+  statusSort: [],
   salaryMin: "",
   salaryMax: "",
   toggleClass: false,
   delItemId: "",
   modalClass: false,
+  itemsPerPage: 6,
+  workStatus: "",
+  vacationStatus: "",
+  firedStatus: "",
 };
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
 export const setSalaryMin = (count) => ({
@@ -34,8 +42,24 @@ export const setDelItemId = (count) => ({
   type: SET_DEL_ITEM_ID,
   payload: count,
 });
+export const setItemsPerPage = (count) => ({
+  type: SET_ITEMS_PER_PAGE,
+  payload: count,
+});
 export const onSearch = (str) => ({
   type: ON_SEARCH,
+  payload: str,
+});
+export const setWorkStatus = (str) => ({
+  type: SET_WORK_STATUS,
+  payload: str,
+});
+export const setVacationStatus = (str) => ({
+  type: SET_VACATION_STATUS,
+  payload: str,
+});
+export const setFiredStatus = (str) => ({
+  type: SET_FIRED_STATUS,
   payload: str,
 });
 export const onStatusSort = (str) => ({ type: SET_STATUS_SORT, payload: str });

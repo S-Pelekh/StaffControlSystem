@@ -52,21 +52,24 @@ export const RegForm = () => {
             <label htmlFor={"name"}>ИМЯ</label>
 
             <Field type="name" name="name" />
-            <ErrorMessage name="name" component="div" />
+            <ErrorMessage name="name" component="div" className="errors" />
             <br />
             <label htmlFor={"photo"}>ФОТОГРАФИЯ</label>
             <Field type="url" name="photo" />
-            {errors.photo && touched.photo ? <div>{errors.photo}</div> : null}
+            {errors.photo && touched.photo ? (
+              <div className="errors">{errors.photo}</div>
+            ) : null}
             <br />
             <label htmlFor={"position"}>ДОЛЖНОСТЬ</label>
             <Field type="text" name="position" />
-            <ErrorMessage name="position" component="div" />
+            <ErrorMessage name="position" component="div" className="errors" />
             <br />
             <label htmlFor={"salary"}>ЗАРПЛАТА</label>
             <Field type="number" name="salary" />
-            <ErrorMessage name="salary " component="div" />
+            <ErrorMessage name="salary " component="div" className="errors" />
             <label htmlFor={"status"}>СТАТУС</label>
             <Field as="select" name="status">
+              <option value=""></option>
               <option value="work">Work</option>
               <option value="vacation">Vacation</option>
               <option value="fired">Fired</option>
@@ -74,10 +77,10 @@ export const RegForm = () => {
 
             <label htmlFor={"enterDate"}>ДАТА НАЧАЛА РАБОТЫ</label>
             <Field type="date" name="entryDate" />
-            <ErrorMessage name="entryDate" component="div" />
+            <ErrorMessage name="entryDate" component="div" className="errors" />
             <br />
             <Button type="submit" disabled={isSubmitting}>
-              СОЗДАТЬ
+              CREATE
             </Button>
           </Form>
         )}

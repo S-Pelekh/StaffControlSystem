@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Main = styled.section`
   height: 100%;
-  width: 1400;
+  width: 100vw;
   background: #7e939f;
   color: #201e20;
   padding: 48px;
@@ -108,5 +108,16 @@ export const Main = styled.section`
   }
   .modalWindow.open {
     visibility: visible;
+  }
+  .showMore {
+    width: 468px;
+    height: 82px;
+    background: #fcfafa;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 60px;
   }
 `;

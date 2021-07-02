@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const SalaryStyled = styled.div`
-  position: fixed;
+  position: absolute;
   width: 181px;
   height: 117px;
   top: 470px;
@@ -18,7 +18,7 @@ export const SalaryStyled = styled.div`
   input {
     width: 45px;
     height: 27px;
-    padding: 4px;
+    padding: 3px;
     background: #fffafa;
     border-radius: 10px;
     margin-right: 10px;

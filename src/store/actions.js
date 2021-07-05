@@ -3,7 +3,7 @@ import Api from "../helpers/api";
 export const SET_USERS = "SET_USERS";
 export const SET_USER_DETAILS = "SET_USER_DETAILS";
 export const ON_SEARCH = "ON_SEARCH";
-export const SET_STATUS_SORT = "SET_STATUS_SORT";
+export const SET_TOGGLE_MENU = "SET_TOGGLE_MENU";
 export const SET_SALARY_MIN = "SET_SALARY_MIN";
 export const SET_SALARY_MAX = "SET_SALARY_MAX";
 export const SET_TOGGLE_CLASS = "SET_TOGGLE_CLASS";
@@ -13,12 +13,13 @@ export const SET_ITEMS_PER_PAGE = "SET_ITEMS_PER_PAGE";
 export const SET_WORK_STATUS = "SET_WORK_STATUS";
 export const SET_VACATION_STATUS = "SET_VACATION_STATUS";
 export const SET_FIRED_STATUS = `SET_FIRED_STATUS`;
+export const SET_USERS_SORT = "SET_USERS_SORT";
 
 export const initialState = {
   users: [],
   userDetails: {},
   keyWords: "",
-  statusSort: [],
+  toggleMenu: false,
   salaryMin: "",
   salaryMax: "",
   toggleClass: false,
@@ -28,6 +29,7 @@ export const initialState = {
   workStatus: "",
   vacationStatus: "",
   firedStatus: "",
+  usersSort: false,
 };
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
 export const setSalaryMin = (count) => ({
@@ -62,13 +64,17 @@ export const setFiredStatus = (str) => ({
   type: SET_FIRED_STATUS,
   payload: str,
 });
-export const onStatusSort = (str) => ({ type: SET_STATUS_SORT, payload: str });
+export const setToggleMenu = (val) => ({ type: SET_TOGGLE_MENU, payload: val });
 export const setToggleClass = (val) => ({
   type: SET_TOGGLE_CLASS,
   payload: val,
 });
 export const setModalClass = (val) => ({
   type: SET_MODAL_CLASS,
+  payload: val,
+});
+export const setUsersSort = (val) => ({
+  type: SET_USERS_SORT,
   payload: val,
 });
 export const setUserDetails = (id, details) => ({

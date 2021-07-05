@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const FormStyle = styled.div`
-  width: 609px;
   height: fit-content;
   background: #2d2f44;
   border-radius: 20px;
@@ -11,8 +10,45 @@ export const FormStyle = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  padding: 38px;
+
   position: relative;
+  @media (min-width: 1000px) {
+    width: 609px;
+    height: 736px;
+    padding: 38px;
+    form {
+      width: 281px;
+      > input,
+      select {
+        height: 37px;
+        margin-top: 10px;
+        margin-bottom: 29px;
+      }
+    }
+    .backIcon {
+      visibility: visible;
+    }
+  }
+  @media (max-width: 999px) {
+    width: 331px;
+    height: 711px;
+    padding: 24px;
+    form {
+      width: 277px;
+      > input,
+      select {
+        height: 40px;
+        margin-top: 9px;
+        margin-bottom: 14px;
+      }
+    }
+    .backIcon {
+      visibility: hidden;
+    }
+    button {
+      margin-top: 19px;
+    }
+  }
   .errors {
     color: red;
   }
@@ -35,14 +71,10 @@ export const FormStyle = styled.div`
     margin-bottom: 29px;
   }
   form {
-    width: 60%;
     > input,
     select {
-      margin-top: 10px;
-      margin-bottom: 29px;
       padding: 10px;
       width: 100%;
-      height: 37px;
       background: #fdf7f7;
       border-radius: 15px;
       outline: none;
@@ -51,7 +83,6 @@ export const FormStyle = styled.div`
       appearance: none;
       background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png")
         no-repeat right #fdf7f7;
-
       background-position-x: 290px;
     }
 

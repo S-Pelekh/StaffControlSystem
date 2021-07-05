@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const SortStyle = styled.div`
-  position: absolute;
   width: 181px;
   height: 43px;
-  top: 210px;
-  right: 68px;
+
   background: #2d2f44;
   border-radius: 10px;
   font-size: 18px;
@@ -15,5 +13,13 @@ export const SortStyle = styled.div`
   justify-content: space-between;
   svg {
     margin-top: 5px;
+  }
+  @media (min-width: 1070px) {
+    position: absolute;
+    top: 85px;
+    right: -178px;
+  }
+  @media (max-width: 1069px) {
+    position: relative;
   }
 `;

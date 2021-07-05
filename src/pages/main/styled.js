@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const Main = styled.section`
   height: 100%;
-  width: 100vw;
+  width: fit-content;
+  margin: 0 auto;
   background: #7e939f;
   color: #201e20;
   padding: 48px;
@@ -28,13 +29,11 @@ export const Main = styled.section`
     opacity: 1;
   }
   .usersBlock {
-    width: 932px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
   }
   .newUserLink {
-    width: 932px;
     margin-bottom: 41px;
     button {
       justify-content: space-between;
@@ -50,6 +49,12 @@ export const Main = styled.section`
     margin-right: auto;
     padding: 22px 28px;
     z-index: 10;
+    .imgBlock {
+      width: 160px;
+      height: 160px;
+      margin-top: 58px;
+      margin-bottom: 35px;
+    }
     .cardButtons {
       width: 322px;
       svg {
@@ -91,8 +96,6 @@ export const Main = styled.section`
       img {
         width: 160px;
         height: 160px;
-        margin-top: 58px;
-        margin-bottom: 35px;
       }
     }
   }
@@ -119,5 +122,101 @@ export const Main = styled.section`
     justify-content: center;
     font-size: 18px;
     margin-top: 60px;
+  }
+  .menu {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    > svg {
+      visibility: hidden;
+    }
+    .menu-panel {
+      position: absolute;
+      visibility: hidden;
+      width: 260px;
+      height: 400px;
+      border-radius: 10px;
+      background: #2d2f44;
+      top: 30px;
+      right: 0;
+      z-index: 20;
+    }
+    .menu-panel.showMenu,
+    .newUserLink.showMenu {
+      visibility: visible;
+    }
+  }
+  .showFilter {
+    visibility: visible;
+  }
+
+  @media (min-width: 1441px) {
+    .usersBlock,
+    .newUserLink {
+      width: 932px;
+    }
+  }
+  @media (min-width: 1311px) and (max-width: 1440px) {
+    .usersBlock,
+    .newUserLink {
+      width: 800px;
+    }
+  }
+  @media (min-width: 1070px) and (max-width: 1310px) {
+    .usersBlock,
+    .newUserLink {
+      width: 550px;
+    }
+  }
+  @media (min-width: 651px) and (max-width: 1069px) {
+    .usersBlock {
+      width: 550px;
+    }
+    .menu {
+      width: 550px;
+      margin-bottom: 18px;
+      > svg {
+        visibility: visible;
+        z-index: 21;
+      }
+      .newUserLink {
+        width: 200px;
+        visibility: hidden;
+        position: absolute;
+        z-index: 21;
+        top: 283px;
+        right: 33px;
+        button {
+          width: 200px;
+        }
+      }
+    }
+  }
+  @media (max-width: 651px) {
+    .usersBlock {
+      width: 260px;
+    }
+    .menu {
+      width: 260px;
+      margin-bottom: 18px;
+      > svg {
+        visibility: visible;
+        z-index: 21;
+      }
+    }
+    .newUserLink {
+      width: 200px;
+      visibility: hidden;
+      position: absolute;
+      z-index: 21;
+      top: 283px;
+      right: 33px;
+      button {
+        width: 200px;
+      }
+    }
+    .showMore {
+      width: 260px;
+    }
   }
 `;

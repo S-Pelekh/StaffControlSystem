@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import {
-  onStatusSort,
   setWorkStatus,
   setVacationStatus,
   setFiredStatus,
@@ -11,10 +10,13 @@ import { StyledFilter } from "./styled";
 
 export const StatusFilter = () => {
   const dispatch = useDispatch();
-  const statusSort = useSelector((store) => store.statusSort);
+  const workStatus = useSelector((store) => store.workStatus);
+  const vacationStatus = useSelector((store) => store.vacationStatus);
+  const firedStatus = useSelector((store) => store.firedStatus);
+  const toggleMenu = useSelector((store) => store.toggleMenu);
 
   return (
-    <StyledFilter>
+    <StyledFilter className={`${toggleMenu ? "showFilter" : ""}`}>
       <div id="checkbox-group">СТАТУС</div>
       <div role="group" aria-labelledby="checkbox-group">
         <div>
@@ -23,18 +25,10 @@ export const StatusFilter = () => {
             type="checkbox"
             name="work"
             value="work"
-            onChange={(el) => {
-              el.target.value
+            onChange={() => {
+              !workStatus
                 ? dispatch(setWorkStatus("work"))
                 : dispatch(setWorkStatus(""));
-              // if (el.target.checked) {
-              //   statusSort.splice(0, 0, el.target.value);
-              //   dispatch(onStatusSort(statusSort));
-              // } else {
-              //   const index = statusSort.findIndex((el) => el === "work");
-              //   statusSort.splice(index, 1);
-              //   dispatch(onStatusSort(statusSort));
-              // }
             }}
           />
           <label htmlFor="work">Работает</label>
@@ -45,18 +39,10 @@ export const StatusFilter = () => {
             type="checkbox"
             name="vacation"
             value="vacation"
-            onChange={(el) => {
-              el.target.value
+            onChange={() => {
+              !vacationStatus
                 ? dispatch(setVacationStatus("vacation"))
                 : dispatch(setVacationStatus(""));
-              // if (el.target.checked) {
-              //   statusSort.splice(1, 0, el.target.value);
-              //   dispatch(onStatusSort(statusSort));
-              // } else {
-              //   const index = statusSort.findIndex((el) => el === "vacation");
-              //   statusSort.splice(index, 1);
-              //   dispatch(onStatusSort(statusSort));
-              // }
             }}
           />
           <label htmlFor="vacation">В отпуске</label>
@@ -67,18 +53,10 @@ export const StatusFilter = () => {
             type="checkbox"
             name="fired"
             value="fired"
-            onChange={(el) => {
-              el.target.value
+            onChange={() => {
+              !firedStatus
                 ? dispatch(setFiredStatus("fired"))
                 : dispatch(setFiredStatus(""));
-              // if (el.target.checked) {
-              //   statusSort.splice(2, 0, el.target.value);
-              //   dispatch(onStatusSort(statusSort));
-              // } else {
-              //   const index = statusSort.findIndex((el) => el === "fired");
-              //   statusSort.splice(index, 1);
-              //   dispatch(onStatusSort(statusSort));
-              // }
             }}
           />
           <label htmlFor="fired">Уволен</label>

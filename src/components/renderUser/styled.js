@@ -28,6 +28,12 @@ export const Card = styled.div`
     align-items: center;
     text-transform: uppercase;
     color: #f3eaea;
+    .imgBlock {
+      width: 110px;
+      height: 110px;
+      margin-top: 19px;
+      margin-bottom: 24px;
+    }
     .usernameBlock,
     .salaryBlock,
     .positionBlock,
@@ -80,8 +86,6 @@ export const Card = styled.div`
       width: 110px;
       height: 110px;
       border-radius: 50%;
-      margin-top: 19px;
-      margin-bottom: 24px;
     }
   }
 `;

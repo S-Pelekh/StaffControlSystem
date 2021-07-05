@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const StyledFilter = styled.div`
   position: absolute;
-  width: 185px;
+  width: 181px;
   height: 162px;
-  top: 280px;
-  right: 68px;
+  top: 270px;
+  right: -130px;
   padding: 26px 21px;
   background: #2d2f44;
   border-radius: 15px;
@@ -58,9 +58,9 @@ export const StyledFilter = styled.div`
     left: 0;
     width: 20px;
     height: 20px;
-    padding-left: 1px;
-    background: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgZmlsbD0ibm9uZSIgaGVpZ2h0PSIyNCIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIHN0cm9rZS13aWR0aD0iMiIgdmlld0JveD0iMCAwIDI0IDI0IiB3aWR0aD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBvbHlsaW5lIHBvaW50cz0iMjAgNiA5IDE3IDQgMTIiLz48L3N2Zz4=")
-      no-repeat right #73b469;
+    padding-right: 1px;
+    background: url("https://i.ibb.co/Hg3kXr7/galka.png") no-repeat center
+      #73b469;
 
     border-radius: 5px;
   }
@@ -71,5 +71,21 @@ export const StyledFilter = styled.div`
 
   input[type="checkbox"]:checked + label:after {
     opacity: 1;
+  }
+
+  @media (min-width: 1070px) {
+    visibility: visible;
+  }
+  @media (min-width: 652px) and (max-width: 1069px) {
+    visibility: hidden;
+    top: 151px;
+    right: 110px;
+    z-index: 21;
+  }
+  @media (max-width: 651px) {
+    visibility: hidden;
+    top: 151px;
+    right: 225px;
+    z-index: 21;
   }
 `;

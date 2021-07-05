@@ -2,7 +2,7 @@ import {
   SET_USERS,
   SET_USER_DETAILS,
   ON_SEARCH,
-  SET_STATUS_SORT,
+  SET_TOGGLE_MENU,
   SET_SALARY_MIN,
   SET_SALARY_MAX,
   SET_TOGGLE_CLASS,
@@ -12,6 +12,7 @@ import {
   SET_WORK_STATUS,
   SET_VACATION_STATUS,
   SET_FIRED_STATUS,
+  SET_USERS_SORT,
   initialState,
 } from "./actions";
 
@@ -25,8 +26,10 @@ export const reducer = (state = initialState, action) => {
       return { ...state, toggleClass: action.payload };
     case SET_MODAL_CLASS:
       return { ...state, modalClass: action.payload };
-    case SET_STATUS_SORT:
-      return { ...state, statusSort: action.payload };
+    case SET_TOGGLE_MENU:
+      return { ...state, toggleMenu: action.payload };
+    case SET_USERS_SORT:
+      return { ...state, usersSort: action.payload };
     case SET_WORK_STATUS:
       return { ...state, workStatus: action.payload };
     case SET_VACATION_STATUS:

@@ -1,22 +1,22 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
 import {
   setWorkStatus,
   setVacationStatus,
   setFiredStatus,
-} from "../../store/actions";
-import { StyledFilter } from "./styled";
+} from '../../store/actions'
+import { StyledFilter } from './styled'
 
 export const StatusFilter = () => {
-  const dispatch = useDispatch();
-  const workStatus = useSelector((store) => store.workStatus);
-  const vacationStatus = useSelector((store) => store.vacationStatus);
-  const firedStatus = useSelector((store) => store.firedStatus);
-  const toggleMenu = useSelector((store) => store.toggleMenu);
+  const dispatch = useDispatch()
+  const workStatus = useSelector((store) => store.workStatus)
+  const vacationStatus = useSelector((store) => store.vacationStatus)
+  const firedStatus = useSelector((store) => store.firedStatus)
+  const toggleMenu = useSelector((store) => store.toggleMenu)
 
   return (
-    <StyledFilter className={`${toggleMenu ? "showFilter" : ""}`}>
+    <StyledFilter className={`${toggleMenu ? 'showFilter' : ''}`}>
       <div id="checkbox-group">СТАТУС</div>
       <div role="group" aria-labelledby="checkbox-group">
         <div>
@@ -27,8 +27,8 @@ export const StatusFilter = () => {
             value="work"
             onChange={() => {
               !workStatus
-                ? dispatch(setWorkStatus("work"))
-                : dispatch(setWorkStatus(""));
+                ? dispatch(setWorkStatus('work'))
+                : dispatch(setWorkStatus(''))
             }}
           />
           <label htmlFor="work">Работает</label>
@@ -41,8 +41,8 @@ export const StatusFilter = () => {
             value="vacation"
             onChange={() => {
               !vacationStatus
-                ? dispatch(setVacationStatus("vacation"))
-                : dispatch(setVacationStatus(""));
+                ? dispatch(setVacationStatus('vacation'))
+                : dispatch(setVacationStatus(''))
             }}
           />
           <label htmlFor="vacation">В отпуске</label>
@@ -55,13 +55,13 @@ export const StatusFilter = () => {
             value="fired"
             onChange={() => {
               !firedStatus
-                ? dispatch(setFiredStatus("fired"))
-                : dispatch(setFiredStatus(""));
+                ? dispatch(setFiredStatus('fired'))
+                : dispatch(setFiredStatus(''))
             }}
           />
           <label htmlFor="fired">Уволен</label>
         </div>
       </div>
     </StyledFilter>
-  );
-};
+  )
+}

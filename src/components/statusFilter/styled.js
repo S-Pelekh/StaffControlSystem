@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const StyledFilter = styled.div`
   position: absolute;
@@ -15,23 +15,23 @@ export const StyledFilter = styled.div`
   > div div {
     margin-top: 8px;
   }
-  input[type="checkbox"]:checked,
-  input[type="checkbox"]:not(:checked) {
+  input[type='checkbox']:checked,
+  input[type='checkbox']:not(:checked) {
     position: absolute;
     left: -9999px;
   }
 
-  input[type="checkbox"]:checked + label,
-  input[type="checkbox"]:not(:checked) + label {
+  input[type='checkbox']:checked + label,
+  input[type='checkbox']:not(:checked) + label {
     display: inline-block;
     position: relative;
     padding-left: 28px;
     line-height: 20px;
     cursor: pointer;
   }
-  input[type="checkbox"]:checked + label:before,
-  input[type="checkbox"]:not(:checked) + label:before {
-    content: "";
+  input[type='checkbox']:checked + label:before,
+  input[type='checkbox']:not(:checked) + label:before {
+    content: '';
     position: absolute;
     left: 0px;
     top: 0px;
@@ -42,34 +42,34 @@ export const StyledFilter = styled.div`
     background-color: #ffffff;
   }
 
-  input[type="checkbox"]:checked + label:before,
-  input[type="checkbox"]:not(:checked) + label:before {
+  input[type='checkbox']:checked + label:before,
+  input[type='checkbox']:not(:checked) + label:before {
     border-radius: 5px;
   }
-  input[type="checkbox"]:checked + label:after,
-  input[type="checkbox"]:not(:checked) + label:after {
-    content: "";
+  input[type='checkbox']:checked + label:after,
+  input[type='checkbox']:not(:checked) + label:after {
+    content: '';
     position: absolute;
     transition: all 0.2s ease;
   }
 
-  input[type="checkbox"]:checked + label:after,
-  input[type="checkbox"]:not(:checked) + label:after {
+  input[type='checkbox']:checked + label:after,
+  input[type='checkbox']:not(:checked) + label:after {
     left: 0;
     width: 20px;
     height: 20px;
     padding-right: 1px;
-    background: url("https://i.ibb.co/Hg3kXr7/galka.png") no-repeat center
+    background: url('https://i.ibb.co/Hg3kXr7/galka.png') no-repeat center
       #73b469;
 
     border-radius: 5px;
   }
 
-  input[type="checkbox"]:not(:checked) + label:after {
+  input[type='checkbox']:not(:checked) + label:after {
     opacity: 0;
   }
 
-  input[type="checkbox"]:checked + label:after {
+  input[type='checkbox']:checked + label:after {
     opacity: 1;
   }
 
@@ -88,4 +88,4 @@ export const StyledFilter = styled.div`
     right: 125px;
     z-index: 21;
   }
-`;
+`

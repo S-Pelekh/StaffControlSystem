@@ -1,24 +1,24 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 
-import { Formik, Field, Form } from "formik";
-import { setSalaryMin, setSalaryMax } from "../../store/actions";
-import { SalaryStyled } from "./styled";
+import { Formik, Field, Form } from 'formik'
+import { setSalaryMin, setSalaryMax } from '../../store/actions'
+import { SalaryStyled } from './styled'
 
 export const SalaryFilter = () => {
-  const toggleMenu = useSelector((store) => store.toggleMenu);
-  const dispatch = useDispatch();
+  const toggleMenu = useSelector((store) => store.toggleMenu)
+  const dispatch = useDispatch()
   return (
-    <SalaryStyled className={`${toggleMenu ? "showFilter" : ""}`}>
+    <SalaryStyled className={`${toggleMenu ? 'showFilter' : ''}`}>
       <h3>ЗАРПЛАТА</h3>
       <Formik
         initialValues={{
-          salaryMin: "",
-          salaryMax: "",
+          salaryMin: '',
+          salaryMax: '',
         }}
         onSubmit={(values) => {
-          dispatch(setSalaryMin(values.salaryMin));
-          dispatch(setSalaryMax(values.salaryMax));
+          dispatch(setSalaryMin(values.salaryMin))
+          dispatch(setSalaryMax(values.salaryMax))
         }}
       >
         <Form>
@@ -28,5 +28,5 @@ export const SalaryFilter = () => {
         </Form>
       </Formik>
     </SalaryStyled>
-  );
-};
+  )
+}

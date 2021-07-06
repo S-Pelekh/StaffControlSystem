@@ -1,13 +1,13 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { StyledModal, Button } from "../ui-kit/styled";
-import { setShowSalaryClass } from "../../store/actions";
+import { StyledModal, Button } from '../ui-kit/styled'
+import { setShowSalaryClass } from '../../store/actions'
 
 export const SalaryModal = () => {
-  const showSalaryClass = useSelector((store) => store.showSalaryClass);
-  const totalSalary = useSelector((store) => store.totalSalary);
-  const dispatch = useDispatch();
+  const showSalaryClass = useSelector((store) => store.showSalaryClass)
+  const totalSalary = useSelector((store) => store.totalSalary)
+  const dispatch = useDispatch()
 
   return (
     <StyledModal>
@@ -16,12 +16,12 @@ export const SalaryModal = () => {
       <div>
         <Button
           onClick={() => {
-            dispatch(setShowSalaryClass(!showSalaryClass));
+            dispatch(setShowSalaryClass(!showSalaryClass))
           }}
         >
           Okay!
         </Button>
       </div>
     </StyledModal>
-  );
-};
+  )
+}

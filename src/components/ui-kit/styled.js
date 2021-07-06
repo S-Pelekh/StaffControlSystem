@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Button = styled.button`
   width: 278px;
@@ -15,18 +15,18 @@ export const Button = styled.button`
   line-height: 19px;
   text-transform: uppercase;
   color: #fffafa;
-`;
+`
 
 export const Input = styled.input`
   width: 281px;
   height: 37px;
   background: #fdf7f7;
   border-radius: 15px;
-`;
+`
 
 export const EmtyCard = styled.div`
   width: 260px;
-`;
+`
 
 export const StyledModal = styled.div`
   width: 903px;
@@ -69,4 +69,4 @@ export const StyledModal = styled.div`
       margin-left: 20px;
     }
   }
-`;
+`

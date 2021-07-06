@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const EditUserStyle = styled.div`
   width: 100%;
@@ -8,4 +8,4 @@ export const EditUserStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-`;
+`

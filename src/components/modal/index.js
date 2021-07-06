@@ -1,25 +1,25 @@
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
-import { StyledModal, Button } from "../ui-kit/styled";
+import { StyledModal, Button } from '../ui-kit/styled'
 import {
   setToggleClass,
   setModalClass,
   onRemoveUser,
   setUsers,
-} from "../../store/actions";
+} from '../../store/actions'
 
 export const Modal = () => {
-  const allUsers = useSelector((store) => store.users);
-  const toggleClass = useSelector((store) => store.toggleClass);
-  const modalClass = useSelector((store) => store.modalClass);
-  const delItemId = useSelector((store) => store.delItemId);
-  const dispatch = useDispatch();
+  const allUsers = useSelector((store) => store.users)
+  const toggleClass = useSelector((store) => store.toggleClass)
+  const modalClass = useSelector((store) => store.modalClass)
+  const delItemId = useSelector((store) => store.delItemId)
+  const dispatch = useDispatch()
   const delUser = (data, id) => {
-    const index = data.findIndex((el) => el.id === id);
-    data.splice(index, 1);
-    dispatch(setUsers(data));
-  };
+    const index = data.findIndex((el) => el.id === id)
+    data.splice(index, 1)
+    dispatch(setUsers(data))
+  }
   return (
     <StyledModal>
       <h3>вы уверены что хотите удалить сотрудника?</h3>
@@ -30,10 +30,10 @@ export const Modal = () => {
       <div>
         <Button
           onClick={() => {
-            onRemoveUser(delItemId);
-            delUser(allUsers, delItemId);
-            dispatch(setToggleClass(!toggleClass));
-            dispatch(setModalClass(!modalClass));
+            onRemoveUser(delItemId)
+            delUser(allUsers, delItemId)
+            dispatch(setToggleClass(!toggleClass))
+            dispatch(setModalClass(!modalClass))
           }}
         >
           Подтвердить
@@ -41,13 +41,13 @@ export const Modal = () => {
         <Button
           className="red"
           onClick={() => {
-            dispatch(setToggleClass(!toggleClass));
-            dispatch(setModalClass(!modalClass));
+            dispatch(setToggleClass(!toggleClass))
+            dispatch(setModalClass(!modalClass))
           }}
         >
           Отменить
         </Button>
       </div>
     </StyledModal>
-  );
-};
+  )
+}

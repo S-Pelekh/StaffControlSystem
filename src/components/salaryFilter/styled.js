@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SalaryStyled = styled.div`
   position: absolute;
@@ -46,4 +46,4 @@ export const SalaryStyled = styled.div`
     right: 125px;
     z-index: 21;
   }
-`;
+`

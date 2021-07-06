@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Main = styled.section`
   height: 100%;
@@ -232,4 +232,4 @@ export const Main = styled.section`
       width: 260px;
     }
   }
-`;
+`

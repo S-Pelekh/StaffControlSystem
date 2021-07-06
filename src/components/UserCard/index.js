@@ -1,26 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { useState } from 'react'
 
-import { Card } from "../renderUser/styled";
-import { ReactComponent as EditIcon } from "../../assets/edit.svg";
-import { ReactComponent as DelIcon } from "../../assets/delete.svg";
+import { Card } from '../renderUser/styled'
+import { ReactComponent as EditIcon } from '../../assets/edit.svg'
+import { ReactComponent as DelIcon } from '../../assets/delete.svg'
 import {
   setToggleClass,
   setModalClass,
   setDelItemId,
-} from "../../store/actions";
+} from '../../store/actions'
 
 export default function UserCard(users) {
-  const [open, setOpen] = useState(false);
-  const toggleClass = useSelector((store) => store.toggleClass);
-  const modalClass = useSelector((store) => store.modalClass);
-  const dispatch = useDispatch();
-  const userName = users.name.split(" ");
+  const [open, setOpen] = useState(false)
+  const toggleClass = useSelector((store) => store.toggleClass)
+  const modalClass = useSelector((store) => store.modalClass)
+  const dispatch = useDispatch()
+  const userName = users.name.split(' ')
 
   return (
-    <Card className={`${open ? "showInfo" : ""}`}>
+    <Card className={`${open ? 'showInfo' : ''}`}>
       <div className="cardButtons">
         <div>
           <Link to={`/edit_user/${users.id}`}>
@@ -30,11 +30,10 @@ export default function UserCard(users) {
         <div>
           <div
             onClick={() => {
-              dispatch(setToggleClass(!toggleClass));
-              dispatch(setModalClass(!modalClass));
-              dispatch(setDelItemId(users.id));
-            }}
-          >
+              dispatch(setToggleClass(!toggleClass))
+              dispatch(setModalClass(!modalClass))
+              dispatch(setDelItemId(users.id))
+            }}>
             <DelIcon />
           </div>
         </div>
@@ -42,10 +41,9 @@ export default function UserCard(users) {
       <div
         className="userInfo"
         onClick={() => {
-          setOpen(!open);
-          dispatch(setToggleClass(!toggleClass));
-        }}
-      >
+          setOpen(!open)
+          dispatch(setToggleClass(!toggleClass))
+        }}>
         <div className="imgBlock">
           <img src={users.photo} alt="Phot" />
         </div>
@@ -66,5 +64,5 @@ export default function UserCard(users) {
         <div className="dateBlock">{users.entryDate}</div>
       </div>
     </Card>
-  );
+  )
 }

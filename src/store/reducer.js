@@ -16,48 +16,48 @@ import {
   SET_TOTAL_SALARY,
   SET_SHOW_SALARY_CLASS,
   initialState,
-} from "./actions";
+} from './actions'
 
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_USERS:
-      return { ...state, users: action.payload };
+      return { ...state, users: action.payload }
     case ON_SEARCH:
-      return { ...state, keyWords: action.payload };
+      return { ...state, keyWords: action.payload }
     case SET_TOGGLE_CLASS:
-      return { ...state, toggleClass: action.payload };
+      return { ...state, toggleClass: action.payload }
     case SET_MODAL_CLASS:
-      return { ...state, modalClass: action.payload };
+      return { ...state, modalClass: action.payload }
     case SET_SHOW_SALARY_CLASS:
-      return { ...state, showSalaryClass: action.payload };
+      return { ...state, showSalaryClass: action.payload }
     case SET_TOGGLE_MENU:
-      return { ...state, toggleMenu: action.payload };
+      return { ...state, toggleMenu: action.payload }
     case SET_USERS_SORT:
-      return { ...state, usersSort: action.payload };
+      return { ...state, usersSort: action.payload }
     case SET_WORK_STATUS:
-      return { ...state, workStatus: action.payload };
+      return { ...state, workStatus: action.payload }
     case SET_VACATION_STATUS:
-      return { ...state, vacationStatus: action.payload };
+      return { ...state, vacationStatus: action.payload }
     case SET_FIRED_STATUS:
-      return { ...state, firedStatus: action.payload };
+      return { ...state, firedStatus: action.payload }
     case SET_SALARY_MIN:
-      return { ...state, salaryMin: action.payload };
+      return { ...state, salaryMin: action.payload }
     case SET_SALARY_MAX:
-      return { ...state, salaryMax: action.payload };
+      return { ...state, salaryMax: action.payload }
     case SET_DEL_ITEM_ID:
-      return { ...state, delItemId: action.payload };
+      return { ...state, delItemId: action.payload }
     case SET_ITEMS_PER_PAGE:
-      return { ...state, itemsPerPage: action.payload };
+      return { ...state, itemsPerPage: action.payload }
     case SET_TOTAL_SALARY:
-      return { ...state, totalSalary: action.payload };
+      return { ...state, totalSalary: action.payload }
     case SET_USER_DETAILS:
-      const { id, details } = action.payload;
+      const { id, details } = action.payload
       return {
         ...state,
         userDetails: { ...state.userDetails, [id]: details },
-      };
+      }
 
     default:
-      return state;
+      return state
   }
-};
+}

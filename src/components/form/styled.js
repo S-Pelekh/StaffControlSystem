@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const FormStyle = styled.div`
   height: fit-content;
@@ -81,7 +81,7 @@ export const FormStyle = styled.div`
     }
     select {
       appearance: none;
-      background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png")
+      background: url('http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png')
         no-repeat right #fdf7f7;
       background-position-x: 290px;
     }
@@ -94,4 +94,4 @@ export const FormStyle = styled.div`
       background: #c05e5e;
     }
   }
-`;
+`

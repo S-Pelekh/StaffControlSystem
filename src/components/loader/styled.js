@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const LoaderStyle = styled.div`
   height: 100vh;
@@ -18,7 +18,7 @@ export const LoaderStyle = styled.div`
     animation: lds-spinner 1.2s linear infinite;
   }
   .lds-spinner div:after {
-    content: " ";
+    content: ' ';
     display: block;
     position: absolute;
     top: 3px;
@@ -84,4 +84,4 @@ export const LoaderStyle = styled.div`
       opacity: 0;
     }
   }
-`;
+`

@@ -112,6 +112,19 @@ export const Main = styled.section`
   .modalWindow.open {
     visibility: visible;
   }
+  .salaryWindow {
+    visibility: hidden;
+    position: absolute;
+    width: fit-content;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+  }
+  .salaryWindow.open {
+    visibility: visible;
+  }
   .showMore {
     width: 468px;
     height: 82px;

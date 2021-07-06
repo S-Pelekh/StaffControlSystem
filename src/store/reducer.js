@@ -13,6 +13,8 @@ import {
   SET_VACATION_STATUS,
   SET_FIRED_STATUS,
   SET_USERS_SORT,
+  SET_TOTAL_SALARY,
+  SET_SHOW_SALARY_CLASS,
   initialState,
 } from "./actions";
 
@@ -26,6 +28,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, toggleClass: action.payload };
     case SET_MODAL_CLASS:
       return { ...state, modalClass: action.payload };
+    case SET_SHOW_SALARY_CLASS:
+      return { ...state, showSalaryClass: action.payload };
     case SET_TOGGLE_MENU:
       return { ...state, toggleMenu: action.payload };
     case SET_USERS_SORT:
@@ -44,6 +48,8 @@ export const reducer = (state = initialState, action) => {
       return { ...state, delItemId: action.payload };
     case SET_ITEMS_PER_PAGE:
       return { ...state, itemsPerPage: action.payload };
+    case SET_TOTAL_SALARY:
+      return { ...state, totalSalary: action.payload };
     case SET_USER_DETAILS:
       const { id, details } = action.payload;
       return {

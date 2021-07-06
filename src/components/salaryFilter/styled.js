@@ -43,7 +43,7 @@ export const SalaryStyled = styled.div`
   @media (max-width: 651px) {
     visibility: hidden;
     top: 282px;
-    right: 225px;
+    right: 125px;
     z-index: 21;
   }
 `;

@@ -52,7 +52,7 @@ export const StyledModal = styled.div`
     color: #fcf6f6;
   }
   div {
-    width: 600px;
+    width: fit-content;
     display: flex;
     justify-content: space-between;
     .red {
@@ -63,6 +63,10 @@ export const StyledModal = styled.div`
     }
     .red:hover {
       background: #ac5555;
+    }
+    > button {
+      margin-right: 20px;
+      margin-left: 20px;
     }
   }
 `;

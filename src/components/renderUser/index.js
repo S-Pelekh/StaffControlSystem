@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 import UserCard from "../UserCard";
 import { EmtyCard } from "../ui-kit/styled";
-
+import useDebounce from "../useDebounce";
 export default function RenderUsers() {
   const users = useSelector((store) => store.users);
   const keyWords = useSelector((store) => store.keyWords);
@@ -14,7 +14,7 @@ export default function RenderUsers() {
   const vacationStatus = useSelector((store) => store.vacationStatus);
   const firedStatus = useSelector((store) => store.firedStatus);
   const usersSort = useSelector((store) => store.usersSort);
-
+  const searchWords = useDebounce(keyWords, 500);
   const usersSorted = usersSort
     ? [...users].sort((a, b) => (a.name >= b.name ? 1 : -1))
     : [...users];
@@ -43,7 +43,9 @@ export default function RenderUsers() {
         )
         .slice(0, itemsPerPage)
     : [...usersSorted]
-        .filter((el) => el.name.toLowerCase().includes(keyWords.toLowerCase()))
+        .filter((el) =>
+          el.name.toLowerCase().includes(searchWords.toLowerCase())
+        )
         .filter(
           (el) =>
             (el.salary >= salaryMin && !salaryMax) ||

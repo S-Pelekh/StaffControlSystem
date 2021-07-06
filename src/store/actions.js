@@ -14,6 +14,8 @@ export const SET_WORK_STATUS = "SET_WORK_STATUS";
 export const SET_VACATION_STATUS = "SET_VACATION_STATUS";
 export const SET_FIRED_STATUS = `SET_FIRED_STATUS`;
 export const SET_USERS_SORT = "SET_USERS_SORT";
+export const SET_TOTAL_SALARY = "SET_TOTAL_SALARY";
+export const SET_SHOW_SALARY_CLASS = "SET_SHOW_SALARY_CLASS";
 
 export const initialState = {
   users: [],
@@ -25,11 +27,13 @@ export const initialState = {
   toggleClass: false,
   delItemId: "",
   modalClass: false,
+  showSalaryClass: false,
   itemsPerPage: 6,
   workStatus: "",
   vacationStatus: "",
   firedStatus: "",
   usersSort: false,
+  totalSalary: 0,
 };
 export const setUsers = (data) => ({ type: SET_USERS, payload: data });
 export const setSalaryMin = (count) => ({
@@ -73,6 +77,11 @@ export const setModalClass = (val) => ({
   type: SET_MODAL_CLASS,
   payload: val,
 });
+export const setShowSalaryClass = (val) => ({
+  type: SET_SHOW_SALARY_CLASS,
+  payload: val,
+});
+
 export const setUsersSort = (val) => ({
   type: SET_USERS_SORT,
   payload: val,
@@ -80,6 +89,10 @@ export const setUsersSort = (val) => ({
 export const setUserDetails = (id, details) => ({
   type: SET_USER_DETAILS,
   payload: { id, details },
+});
+export const setTotalSalary = (count) => ({
+  type: SET_TOTAL_SALARY,
+  payload: count,
 });
 export const onGetUsers = () => (dispatch) => {
   Api.getPeople().then((data) => {

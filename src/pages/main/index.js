@@ -10,20 +10,23 @@ import {
 import { Main } from "./styled";
 import { bindActionCreators } from "redux";
 import RenderUsers from "../../components/renderUser/index";
-import { SearchInput } from "../../components/searchInput/index";
+import SearchInput from "../../components/searchInput/index";
 import { SalaryFilter } from "../../components/salaryFilter/index";
 import { StatusFilter } from "../../components/statusFilter/index";
+import { SalaryCalc } from "../../components/salaryCalc";
 import { Button } from "../../components/ui-kit/styled";
 import { ReactComponent as CrossIcon } from "../../assets/cross.svg";
 import { ReactComponent as MenuIcon } from "../../assets/menu.svg";
 import { EmtyCard } from "../../components/ui-kit/styled";
 import { Modal } from "../../components/modal";
 import { UsersSort } from "../../components/usersSort";
+import { SalaryModal } from "../../components/salaryModal";
 
 export const MainPage = () => {
   const totalUsers = useSelector((store) => store.users.length);
   const toggleClass = useSelector((store) => store.toggleClass);
   const modalClass = useSelector((store) => store.modalClass);
+  const showSalaryClass = useSelector((store) => store.showSalaryClass);
   const toggleMenu = useSelector((store) => store.toggleMenu);
   const itemsPerPage = useSelector((store) => store.itemsPerPage);
   const dispatch = useDispatch();
@@ -36,7 +39,9 @@ export const MainPage = () => {
   return (
     <Main>
       <div
-        className={`shadow ${toggleClass || toggleMenu ? "show" : ""}`}
+        className={`shadow ${
+          toggleClass || toggleMenu || showSalaryClass ? "show" : ""
+        }`}
         onClick={() =>
           toggleMenu ? dispatch(setToggleMenu(!toggleMenu)) : false
         }
@@ -64,8 +69,12 @@ export const MainPage = () => {
 
       <StatusFilter />
       <SalaryFilter />
+      <SalaryCalc />
       <div className={`modalWindow ${modalClass ? "open" : ""}`}>
         <Modal />
+      </div>
+      <div className={`salaryWindow ${showSalaryClass ? "open" : ""}`}>
+        <SalaryModal />
       </div>
       {totalUsers > itemsPerPage ? (
         <div

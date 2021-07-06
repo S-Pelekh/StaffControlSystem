@@ -85,7 +85,7 @@ export const StyledFilter = styled.div`
   @media (max-width: 651px) {
     visibility: hidden;
     top: 151px;
-    right: 225px;
+    right: 125px;
     z-index: 21;
   }
 `;

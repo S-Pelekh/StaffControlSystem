@@ -5,18 +5,21 @@ import { SearchStyled } from "./styled";
 
 import { onSearch } from "../../store/actions";
 
-export const SearchInput = () => {
+export default function SearchInput() {
   const keyWords = useSelector((store) => store.keyWords);
   const dispatch = useDispatch();
+
   return (
     <SearchStyled>
       <input
         type="text"
         placeholder="Введите имя сотрудника"
         value={keyWords}
-        onChange={(el) => dispatch(onSearch(el.target.value))}
+        onChange={(el) => {
+          dispatch(onSearch(el.target.value));
+        }}
       />
       <SearchIcon />
     </SearchStyled>
   );
-};
+}

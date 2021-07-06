@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const UserDetailsStyle = styled.section`
   height: calc(100vh - 70px);

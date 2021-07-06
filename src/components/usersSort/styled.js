@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const SortStyle = styled.div`
   width: 181px;
@@ -22,4 +22,4 @@ export const SortStyle = styled.div`
   @media (max-width: 1069px) {
     position: relative;
   }
-`
+`;

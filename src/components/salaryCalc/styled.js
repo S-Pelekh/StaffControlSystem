@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledCalc = styled.div`
   position: absolute;
@@ -33,4 +33,4 @@ export const StyledCalc = styled.div`
     right: 110px;
     z-index: 21;
   }
-`
+`;

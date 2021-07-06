@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const StyledFilter = styled.div`
   position: absolute;
@@ -88,4 +88,4 @@ export const StyledFilter = styled.div`
     right: 125px;
     z-index: 21;
   }
-`
+`;

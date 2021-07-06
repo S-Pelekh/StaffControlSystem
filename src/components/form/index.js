@@ -1,12 +1,12 @@
-import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import * as Yup from 'yup'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
-import { onSetNewUser } from '../../store/actions'
-import { FormStyle } from './styled'
-import { Button } from '../ui-kit/styled'
-import { ReactComponent as BackIcon } from '../../assets/back.svg'
+import { onSetNewUser } from '../../store/actions';
+import { FormStyle } from './styled';
+import { Button } from '../ui-kit/styled';
+import { ReactComponent as BackIcon } from '../../assets/back.svg';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -21,7 +21,7 @@ const SignupSchema = Yup.object().shape({
   entryDate: Yup.date()
     .min('2020-06-16', 'Company not created yet')
     .max(new Date(), 'This is future'),
-})
+});
 
 export const RegForm = () => {
   return (
@@ -43,7 +43,7 @@ export const RegForm = () => {
         validateOnBlur
         validationSchema={SignupSchema}
         onSubmit={(values) => {
-          onSetNewUser(values)
+          onSetNewUser(values);
         }}>
         {({ errors, touched, isSubmitting }) => (
           <Form>
@@ -85,5 +85,5 @@ export const RegForm = () => {
         )}
       </Formik>
     </FormStyle>
-  )
-}
+  );
+};

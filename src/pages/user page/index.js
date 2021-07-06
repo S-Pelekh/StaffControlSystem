@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { bindActionCreators } from "redux";
-import moment from "moment";
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import moment from 'moment';
 
-import { onGetUserDetails } from "../../store/actions";
-import { UserDetailsStyle } from "./styled";
-import { Loader } from "../../components/loader/index";
+import { onGetUserDetails } from '../../store/actions';
+import { UserDetailsStyle } from './styled';
+import { Loader } from '../../components/loader/index';
 
 export const UserDetails = () => {
   const userDetails = useSelector((store) => store.userDetails);
@@ -40,7 +40,7 @@ export const UserDetails = () => {
           </p>
           <p>
             <b>Entry Data:</b>
-            {moment(entryDate).format("DD.MM.YYYY")}
+            {moment(entryDate).format('DD.MM.YYYY')}
           </p>
         </div>
       </UserDetailsStyle>

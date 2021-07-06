@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
-import { bindActionCreators } from 'redux'
-import { Formik, Form, Field, ErrorMessage } from 'formik'
-import { FormStyle } from '../../components/form/styled'
-import * as Yup from 'yup'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { FormStyle } from '../../components/form/styled';
+import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
 import {
   onGetUserDetails,
   onEditUser,
   setUserDetails,
-} from '../../store/actions'
-import { EditUserStyle } from './styled'
-import { Button } from '../../components/ui-kit/styled.js'
-import { ReactComponent as BackIcon } from '../../assets/back.svg'
+} from '../../store/actions';
+import { EditUserStyle } from './styled';
+import { Button } from '../../components/ui-kit/styled.js';
+import { ReactComponent as BackIcon } from '../../assets/back.svg';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -30,20 +30,21 @@ const SignupSchema = Yup.object().shape({
     .min('2020-06-16', 'Company not created yet')
     .max(new Date(), 'This is future')
     .required('Enter date'),
-})
+});
 
 export const EditUser = () => {
-  const userDetails = useSelector((store) => store.userDetails)
-  const dispatch = useDispatch()
-  const { id } = useParams()
-  const fetch = bindActionCreators(() => onGetUserDetails(id), dispatch)
+  const userDetails = useSelector((store) => store.userDetails);
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const fetch = bindActionCreators(() => onGetUserDetails(id), dispatch);
   useEffect(() => {
     if (!userDetails[id]) {
-      fetch()
+      fetch();
     }
-  }, [userDetails])
+  }, [userDetails]);
   if (userDetails[id]) {
-    const { name, photo, position, salary, status, entryDate } = userDetails[id]
+    const { name, photo, position, salary, status, entryDate } =
+      userDetails[id];
     return (
       <EditUserStyle>
         <FormStyle>
@@ -64,8 +65,8 @@ export const EditUser = () => {
             validateOnBlur
             validationSchema={SignupSchema}
             onSubmit={(values) => {
-              onEditUser(values, +id)
-              dispatch(setUserDetails(+id, values))
+              onEditUser(values, +id);
+              dispatch(setUserDetails(+id, values));
             }}>
             {({ errors, touched, isSubmitting }) => (
               <Form>
@@ -107,6 +108,6 @@ export const EditUser = () => {
           </Formik>
         </FormStyle>
       </EditUserStyle>
-    )
-  } else return <EditUserStyle>Loading...</EditUserStyle>
-}
+    );
+  } else return <EditUserStyle>Loading...</EditUserStyle>;
+};

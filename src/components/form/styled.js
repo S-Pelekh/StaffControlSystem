@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const FormStyle = styled.div`
   height: fit-content;
@@ -94,4 +94,4 @@ export const FormStyle = styled.div`
       background: #c05e5e;
     }
   }
-`
+`;

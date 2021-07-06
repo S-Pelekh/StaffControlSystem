@@ -1,19 +1,19 @@
-import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   setWorkStatus,
   setVacationStatus,
   setFiredStatus,
-} from '../../store/actions'
-import { StyledFilter } from './styled'
+} from '../../store/actions';
+import { StyledFilter } from './styled';
 
 export const StatusFilter = () => {
-  const dispatch = useDispatch()
-  const workStatus = useSelector((store) => store.workStatus)
-  const vacationStatus = useSelector((store) => store.vacationStatus)
-  const firedStatus = useSelector((store) => store.firedStatus)
-  const toggleMenu = useSelector((store) => store.toggleMenu)
+  const dispatch = useDispatch();
+  const workStatus = useSelector((store) => store.workStatus);
+  const vacationStatus = useSelector((store) => store.vacationStatus);
+  const firedStatus = useSelector((store) => store.firedStatus);
+  const toggleMenu = useSelector((store) => store.toggleMenu);
 
   return (
     <StyledFilter className={`${toggleMenu ? 'showFilter' : ''}`}>
@@ -28,7 +28,7 @@ export const StatusFilter = () => {
             onChange={() => {
               !workStatus
                 ? dispatch(setWorkStatus('work'))
-                : dispatch(setWorkStatus(''))
+                : dispatch(setWorkStatus(''));
             }}
           />
           <label htmlFor="work">Работает</label>
@@ -42,7 +42,7 @@ export const StatusFilter = () => {
             onChange={() => {
               !vacationStatus
                 ? dispatch(setVacationStatus('vacation'))
-                : dispatch(setVacationStatus(''))
+                : dispatch(setVacationStatus(''));
             }}
           />
           <label htmlFor="vacation">В отпуске</label>
@@ -56,12 +56,12 @@ export const StatusFilter = () => {
             onChange={() => {
               !firedStatus
                 ? dispatch(setFiredStatus('fired'))
-                : dispatch(setFiredStatus(''))
+                : dispatch(setFiredStatus(''));
             }}
           />
           <label htmlFor="fired">Уволен</label>
         </div>
       </div>
     </StyledFilter>
-  )
-}
+  );
+};

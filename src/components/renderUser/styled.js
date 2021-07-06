@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Card = styled.div`
   width: 260px;
@@ -88,4 +88,4 @@ export const Card = styled.div`
       border-radius: 50%;
     }
   }
-`
+`;

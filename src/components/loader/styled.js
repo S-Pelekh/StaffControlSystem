@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const LoaderStyle = styled.div`
   height: 100vh;
@@ -84,4 +84,4 @@ export const LoaderStyle = styled.div`
       opacity: 0;
     }
   }
-`
+`;

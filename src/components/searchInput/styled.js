@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const SearchStyled = styled.div`
   height: 50px;
@@ -44,4 +44,4 @@ export const SearchStyled = styled.div`
       width: 246px;
     }
   }
-`
+`;

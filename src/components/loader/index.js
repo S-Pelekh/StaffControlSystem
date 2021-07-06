@@ -1,5 +1,5 @@
-import React from 'react'
-import { LoaderStyle } from './styled'
+import React from 'react';
+import { LoaderStyle } from './styled';
 
 export const Loader = () => {
   return (
@@ -19,5 +19,5 @@ export const Loader = () => {
         <div></div>
       </div>
     </LoaderStyle>
-  )
-}
+  );
+};

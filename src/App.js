@@ -1,10 +1,10 @@
-import { Fragment } from "react";
-import { Switch, Route, Redirect } from "react-router-dom";
+import { Fragment } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
-import { MainPage } from "./pages/main/index";
-import { UserDetails } from "./pages/user page/index";
-import { NewUser } from "./pages/new user/index";
-import { EditUser } from "./pages/edit user/index";
+import { MainPage } from './pages/main/index';
+import { UserDetails } from './pages/user page/index';
+import { NewUser } from './pages/new user/index';
+import { EditUser } from './pages/edit user/index';
 
 function App() {
   return (

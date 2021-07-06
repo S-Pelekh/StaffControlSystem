@@ -2,7 +2,6 @@ import { Fragment } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { MainPage } from './pages/main/index';
-import { UserDetails } from './pages/user page/index';
 import { NewUser } from './pages/new user/index';
 import { EditUser } from './pages/edit user/index';
 
@@ -11,7 +10,6 @@ function App() {
     <Fragment>
       <Switch>
         <Route path="/new_user" component={NewUser} />
-        <Route path="/user/:id" component={UserDetails} />
         <Route path="/users" component={MainPage} />
         <Route exact path="/" component={() => <Redirect to="/users" />} />
         <Route path="/edit_user/:id" component={EditUser} />

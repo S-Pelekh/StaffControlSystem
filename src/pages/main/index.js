@@ -34,6 +34,7 @@ export const MainPage = () => {
 
   useEffect(() => {
     fetch();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [totalUsers]);
 
   return (

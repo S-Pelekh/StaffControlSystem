@@ -41,6 +41,7 @@ export const EditUser = () => {
     if (!userDetails[id]) {
       fetch();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userDetails]);
   if (userDetails[id]) {
     const { name, photo, position, salary, status, entryDate } =

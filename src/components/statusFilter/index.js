@@ -1,5 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 
 import {
   setWorkStatus,
@@ -14,10 +15,11 @@ export const StatusFilter = () => {
   const vacationStatus = useSelector((store) => store.vacationStatus);
   const firedStatus = useSelector((store) => store.firedStatus);
   const toggleMenu = useSelector((store) => store.toggleMenu);
+  const { t } = useTranslation();
 
   return (
     <StyledFilter className={`${toggleMenu ? 'showFilter' : ''}`}>
-      <div id="checkbox-group">СТАТУС</div>
+      <div id="checkbox-group">{t('main.status')}</div>
       <div role="group" aria-labelledby="checkbox-group">
         <div>
           <input
@@ -31,7 +33,7 @@ export const StatusFilter = () => {
                 : dispatch(setWorkStatus(''));
             }}
           />
-          <label htmlFor="work">Работает</label>
+          <label htmlFor="work">{t('main.statusFilter.work')}</label>
         </div>
         <div>
           <input
@@ -45,7 +47,7 @@ export const StatusFilter = () => {
                 : dispatch(setVacationStatus(''));
             }}
           />
-          <label htmlFor="vacation">В отпуске</label>
+          <label htmlFor="vacation">{t('main.statusFilter.vacation')}</label>
         </div>
         <div>
           <input
@@ -59,7 +61,7 @@ export const StatusFilter = () => {
                 : dispatch(setFiredStatus(''));
             }}
           />
-          <label htmlFor="fired">Уволен</label>
+          <label htmlFor="fired">{t('main.statusFilter.fired')}</label>
         </div>
       </div>
     </StyledFilter>

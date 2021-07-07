@@ -2,8 +2,9 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-import { onSetNewUser } from '../../store/actions';
+import { onSetNewUser } from '../../store/thunks';
 import { FormStyle } from './styled';
 import { Button } from '../ui-kit/styled';
 import { ReactComponent as BackIcon } from '../../assets/back.svg';
@@ -24,6 +25,7 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const RegForm = () => {
+  const { t } = useTranslation();
   return (
     <FormStyle>
       <Link to="/users">
@@ -47,39 +49,41 @@ export const RegForm = () => {
         }}>
         {({ errors, touched, isSubmitting }) => (
           <Form>
-            <h3>СОЗДАНИЕ</h3>
-            <label htmlFor={'name'}>ИМЯ</label>
+            <h3>{t('form.create')}</h3>
+            <label htmlFor={'name'}>{t('form.name')}</label>
 
             <Field type="name" name="name" />
             <ErrorMessage name="name" component="div" className="errors" />
             <br />
-            <label htmlFor={'photo'}>ФОТОГРАФИЯ</label>
+            <label htmlFor={'photo'}>{t('form.photo')}</label>
             <Field type="url" name="photo" />
             {errors.photo && touched.photo ? (
               <div className="errors">{errors.photo}</div>
             ) : null}
             <br />
-            <label htmlFor={'position'}>ДОЛЖНОСТЬ</label>
+            <label htmlFor={'position'}>{t('form.position')}</label>
             <Field type="text" name="position" />
             <ErrorMessage name="position" component="div" className="errors" />
             <br />
-            <label htmlFor={'salary'}>ЗАРПЛАТА</label>
+            <label htmlFor={'salary'}>{t('main.salary')}</label>
             <Field type="number" name="salary" />
             <ErrorMessage name="salary " component="div" className="errors" />
-            <label htmlFor={'status'}>СТАТУС</label>
+            <label htmlFor={'status'}>{t('main.status')}</label>
             <Field as="select" name="status">
               <option value=""></option>
-              <option value="work">Work</option>
-              <option value="vacation">Vacation</option>
-              <option value="fired">Fired</option>
+              <option value="work">{t('main.statusFilter.work')}</option>
+              <option value="vacation">
+                {t('main.statusFilter.vacation')}
+              </option>
+              <option value="fired">{t('main.statusFilter.fired')}</option>
             </Field>
 
-            <label htmlFor={'enterDate'}>ДАТА НАЧАЛА РАБОТЫ</label>
+            <label htmlFor={'enterDate'}>{t('form.entryDate')}</label>
             <Field type="date" name="entryDate" />
             <ErrorMessage name="entryDate" component="div" className="errors" />
             <br />
             <Button type="submit" disabled={isSubmitting}>
-              CREATE
+              {t('form.create')}
             </Button>
           </Form>
         )}

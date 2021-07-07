@@ -2,11 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import {
-  onGetUsers,
-  setItemsPerPage,
-  setToggleMenu,
-} from '../../store/actions';
+import { setItemsPerPage, setToggleMenu } from '../../store/actions';
+import { onGetUsers } from '../../store/thunks';
 import { Main } from './styled';
 import { bindActionCreators } from 'redux';
 import RenderUsers from '../../components/renderUser/index';
@@ -21,6 +18,7 @@ import { EmtyCard } from '../../components/ui-kit/styled';
 import { Modal } from '../../components/modal';
 import { UsersSort } from '../../components/usersSort';
 import { SalaryModal } from '../../components/salaryModal';
+import { useTranslation } from 'react-i18next';
 
 export const MainPage = () => {
   const totalUsers = useSelector((store) => store.users.length);
@@ -31,6 +29,8 @@ export const MainPage = () => {
   const itemsPerPage = useSelector((store) => store.itemsPerPage);
   const dispatch = useDispatch();
   const fetch = bindActionCreators(onGetUsers, dispatch);
+  const { t, i18n } = useTranslation();
+  const changeLanguage = (language) => i18n.changeLanguage(language);
 
   useEffect(() => {
     fetch();
@@ -53,7 +53,7 @@ export const MainPage = () => {
           <Link to="/new_user" onClick={() => dispatch(setToggleMenu(false))}>
             <Button>
               <CrossIcon />
-              Добавить сотрудника
+              {t('main.button')}
             </Button>
           </Link>
         </div>
@@ -81,11 +81,15 @@ export const MainPage = () => {
         <div
           className="showMore"
           onClick={() => dispatch(setItemsPerPage(itemsPerPage + 6))}>
-          ПОКАЗАТЬ БОЛЬШЕ...
+          {t('main.showMore')}
         </div>
       ) : (
         <div></div>
       )}
+      <div className="langBlock">
+        <button onClick={() => changeLanguage('en')}>En</button>
+        <button onClick={() => changeLanguage('ru')}>Ru</button>
+      </div>
     </Main>
   );
 };

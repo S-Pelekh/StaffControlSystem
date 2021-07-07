@@ -5,7 +5,7 @@ export const LoaderStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #e0a96d;
+  background: #7e939f;
   .lds-spinner {
     color: black;
     display: inline-block;

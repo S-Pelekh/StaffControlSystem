@@ -1,5 +1,3 @@
-import Api from '../helpers/api';
-
 export const SET_USERS = 'SET_USERS';
 export const SET_USER_DETAILS = 'SET_USER_DETAILS';
 export const ON_SEARCH = 'ON_SEARCH';
@@ -94,22 +92,3 @@ export const setTotalSalary = (count) => ({
   type: SET_TOTAL_SALARY,
   payload: count,
 });
-export const onGetUsers = () => (dispatch) => {
-  Api.getPeople().then((data) => {
-    dispatch(setUsers(data));
-  });
-};
-export const onGetUserDetails = (id) => (dispatch) => {
-  Api.getUserDetails(id).then((data) => {
-    dispatch(setUserDetails(id, data));
-  });
-};
-export const onSetNewUser = (values) => Api.setNewUser(values);
-
-export const onEditUser = (values, id) => {
-  Api.editUser(values, id);
-};
-
-export const onRemoveUser = (id) => {
-  Api.removeUser(id);
-};

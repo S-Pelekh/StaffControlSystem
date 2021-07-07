@@ -1,68 +1,41 @@
 export default class Api {
   static url = `http://localhost:3001`;
 
-  static getPeople = () => {
+  static request = (status, link, options) => {
     return new Promise(async (res, rej) => {
-      const result = await fetch(`${Api.url}/people`);
-      if (result.status === 200) {
+      const result = await fetch(link, options);
+      if (result.status === status) {
         res(await result.json());
       } else {
         rej(await result.json());
       }
     });
   };
-  static getUserDetails = (id) => {
-    return new Promise(async (res, rej) => {
-      const result = await fetch(`${Api.url}/people/${id}`);
-      if (result.status === 200) {
-        res(await result.json());
-      } else {
-        rej(await result.json());
-      }
+
+  static getPeople = () => this.request(200, `${Api.url}/people`);
+
+  static getUserDetails = (id) => this.request(200, `${Api.url}/people/${id}`);
+
+  static setNewUser = (data) =>
+    this.request(201, `${Api.url}/people`, {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     });
-  };
-  static setNewUser = (data) => {
-    return new Promise(async (res, rej) => {
-      const result = await fetch(`${Api.url}/people`, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      if (result.status === 201) {
-        res(await result.json());
-      } else {
-        rej(await result.json());
-      }
+
+  static editUser = (data, id) =>
+    this.request(200, `${Api.url}/people/${id}`, {
+      method: 'PATCH',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
     });
-  };
-  static editUser = (data, id) => {
-    return new Promise(async (res, rej) => {
-      const result = await fetch(`${Api.url}/people/${id}`, {
-        method: 'PATCH',
-        body: JSON.stringify(data),
-        headers: {
-          'Content-type': 'application/json; charset=UTF-8',
-        },
-      });
-      if (result.status === 200) {
-        res(await result.json());
-      } else {
-        rej(await result.json());
-      }
+
+  static removeUser = (id) =>
+    this.request(200, `${Api.url}/people/${id}`, {
+      method: 'DELETE',
     });
-  };
-  static removeUser = (id) => {
-    return new Promise(async (res, rej) => {
-      const result = await fetch(`${Api.url}/people/${id}`, {
-        method: 'DELETE',
-      });
-      if (result.status === 200) {
-        res(await result.json());
-      } else {
-        rej(await result.json());
-      }
-    });
-  };
 }

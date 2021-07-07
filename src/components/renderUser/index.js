@@ -3,7 +3,8 @@ import { useSelector } from 'react-redux';
 
 import UserCard from '../UserCard';
 import { EmtyCard } from '../ui-kit/styled';
-import useDebounce from '../useDebounce';
+import useDebounce from '../../hooks/useDebounce/index';
+
 export default function RenderUsers() {
   const users = useSelector((store) => store.users);
   const keyWords = useSelector((store) => store.keyWords);

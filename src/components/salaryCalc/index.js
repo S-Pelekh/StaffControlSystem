@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setTotalSalary, setShowSalaryClass } from '../../store/actions';
+import { useTranslation } from 'react-i18next';
 
 import { Button } from '../ui-kit/styled';
 import { StyledCalc } from '../salaryCalc/styled';
@@ -10,6 +11,7 @@ export const SalaryCalc = () => {
   const showSalaryClass = useSelector((store) => store.showSalaryClass);
   const toggleMenu = useSelector((store) => store.toggleMenu);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const workPortion = [...users].filter((el) =>
     el.status.toLowerCase().includes('work'),
   );
@@ -37,7 +39,7 @@ export const SalaryCalc = () => {
           dispatch(setShowSalaryClass(!showSalaryClass));
           dispatch(setTotalSalary(totalSalary));
         }}>
-        Today Salary
+        {t('main.todaySalary')}
       </Button>
     </StyledCalc>
   );

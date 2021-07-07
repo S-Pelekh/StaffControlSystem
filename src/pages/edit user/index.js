@@ -7,11 +7,8 @@ import { FormStyle } from '../../components/form/styled';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
-import {
-  onGetUserDetails,
-  onEditUser,
-  setUserDetails,
-} from '../../store/actions';
+import { setUserDetails } from '../../store/actions';
+import { onGetUserDetails, onEditUser } from '../../store/thunks';
 import { EditUserStyle } from './styled';
 import { Button } from '../../components/ui-kit/styled.js';
 import { ReactComponent as BackIcon } from '../../assets/back.svg';

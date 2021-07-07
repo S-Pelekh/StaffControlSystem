@@ -135,6 +135,7 @@ export const Main = styled.section`
     justify-content: center;
     font-size: 18px;
     margin-top: 60px;
+    margin-bottom: 30px;
   }
   .menu {
     position: relative;
@@ -230,6 +231,18 @@ export const Main = styled.section`
     }
     .showMore {
       width: 260px;
+    }
+  }
+  .langBlock {
+    > button {
+      width: 30px;
+      height: 30px;
+      margin: 5px;
+      background: #2d2f44;
+      color: #fcfafa;
+      font-weight: bold;
+      font-size: 14px;
+      border-radius: 5px;
     }
   }
 `;

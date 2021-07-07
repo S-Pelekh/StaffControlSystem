@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
-
+import moment from 'moment';
 import { Card } from '../renderUser/styled';
 import { ReactComponent as EditIcon } from '../../assets/edit.svg';
 import { ReactComponent as DelIcon } from '../../assets/delete.svg';
@@ -61,7 +61,9 @@ export default function UserCard(users) {
         <div className="statusBlock">
           <div className={`${users.status}Block`}>{users.status}</div>
         </div>
-        <div className="dateBlock">{users.entryDate}</div>
+        <div className="dateBlock">
+          {moment(users.entryDate).format('DD MMM YYYY')}
+        </div>
       </div>
     </Card>
   );

@@ -1,0 +1,31 @@
+{
+   "main":{ 
+    "button": "ADD EMPLOYEE",   
+    "showMore": "Show more...",
+    "status": "STATUS",
+    "statusFilter": {
+        "work": "work",
+        "vacation": "vacation",
+        "fired": "fired"
+    },
+    "salary": "SALARY",
+    "input": "Enter employee name",
+    "sort": "From A to Z",
+    "todaySalary": "TODAY SALARY"
+},
+"form":{
+    "create":"CREATE",
+    "name":"NAME",
+    "photo": "PHOTO",
+    "position": "POSITION",
+    "entryDate": "ENTRY DATE"
+},
+"delModal":{
+    "tittle": "are you sure to delete employee?",
+    "paragraph": "After accept you can`t remove employee. This transaction irrevocable",
+    "acceptButton": "Accept",
+    "cancelButton": "Cancel"
+
+},
+"salaryModal": "TODAY EMPLOYEE SALARY:"
+}

@@ -5,9 +5,10 @@ import { ReactComponent as SortIcon } from '../../assets/sortArrow.svg';
 import { useTranslation } from 'react-i18next';
 
 import { SortStyle } from './styled';
+import { InitState } from '../../store/types';
 
-export const UsersSort = () => {
-  const usersSort = useSelector((store) => store.usersSort);
+export const UsersSort: React.FC = () => {
+  const usersSort = useSelector((store: InitState) => store.usersSort);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   return (

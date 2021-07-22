@@ -8,13 +8,14 @@ import {
   setFiredStatus,
 } from '../../store/actions';
 import { StyledFilter } from './styled';
+import { InitState } from '../../store/types';
 
-export const StatusFilter = () => {
+export const StatusFilter:React.FC = () => {
   const dispatch = useDispatch();
-  const workStatus = useSelector((store) => store.workStatus);
-  const vacationStatus = useSelector((store) => store.vacationStatus);
-  const firedStatus = useSelector((store) => store.firedStatus);
-  const toggleMenu = useSelector((store) => store.toggleMenu);
+  const workStatus = useSelector((store: InitState) => store.workStatus);
+  const vacationStatus = useSelector((store:InitState) => store.vacationStatus);
+  const firedStatus = useSelector((store:InitState) => store.firedStatus);
+  const toggleMenu = useSelector((store: InitState) => store.toggleMenu);
   const { t } = useTranslation();
 
   return (

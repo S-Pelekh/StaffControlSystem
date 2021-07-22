@@ -12,6 +12,7 @@ import { onGetUserDetails, onEditUser } from '../../store/thunks';
 import { EditUserStyle } from './styled';
 import { Button } from '../../components/ui-kit/styled.js';
 import { ReactComponent as BackIcon } from '../../assets/back.svg';
+import {  InitState } from '../../store/types';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -30,16 +31,17 @@ const SignupSchema = Yup.object().shape({
 });
 
 export const EditUser = () => {
-  const userDetails = useSelector((store) => store.userDetails);
+  const userDetails = useSelector((store: InitState) => store.userDetails);
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id } = useParams() as any as { id: number};
   const fetch = bindActionCreators(() => onGetUserDetails(id), dispatch);
+  console.log(userDetails)
   useEffect(() => {
     if (!userDetails[id]) {
       fetch();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userDetails]);
+  }, [userDetails[id]]);
   if (userDetails[id]) {
     const { name, photo, position, salary, status, entryDate } =
       userDetails[id];

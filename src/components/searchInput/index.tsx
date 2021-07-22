@@ -5,9 +5,10 @@ import { SearchStyled } from './styled';
 import { useTranslation } from 'react-i18next';
 
 import { onSearch } from '../../store/actions';
+import { InitState } from '../../store/types';
 
 export default function SearchInput() {
-  const keyWords = useSelector((store) => store.keyWords);
+  const keyWords = useSelector((store: InitState) => store.keyWords);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

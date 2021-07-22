@@ -5,9 +5,10 @@ import { useTranslation } from 'react-i18next';
 import { Formik, Field, Form } from 'formik';
 import { setSalaryMin, setSalaryMax } from '../../store/actions';
 import { SalaryStyled } from './styled';
+import { InitState } from '../../store/types';
 
-export const SalaryFilter = () => {
-  const toggleMenu = useSelector((store) => store.toggleMenu);
+export const SalaryFilter: React.FC = () => {
+  const toggleMenu = useSelector((store:InitState) => store.toggleMenu);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   return (
@@ -15,8 +16,8 @@ export const SalaryFilter = () => {
       <h3>{t('main.salary')}</h3>
       <Formik
         initialValues={{
-          salaryMin: '',
-          salaryMax: '',
+          salaryMin:0,
+          salaryMax: 0,
         }}
         onSubmit={(values) => {
           dispatch(setSalaryMin(values.salaryMin));

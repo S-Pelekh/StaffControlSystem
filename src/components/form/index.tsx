@@ -9,6 +9,7 @@ import { FormStyle } from './styled';
 import { Button } from '../ui-kit/styled';
 import { ReactComponent as BackIcon } from '../../assets/back.svg';
 
+
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
     .min(2, 'Too Short!')
@@ -24,7 +25,7 @@ const SignupSchema = Yup.object().shape({
     .max(new Date(), 'This is future'),
 });
 
-export const RegForm = () => {
+export const RegForm: React.FC = () => {
   const { t } = useTranslation();
   return (
     <FormStyle>

@@ -5,15 +5,16 @@ import { useTranslation } from 'react-i18next';
 import { StyledModal, Button } from '../ui-kit/styled';
 import { setToggleClass, setModalClass, setUsers } from '../../store/actions';
 import { onRemoveUser } from '../../store/thunks';
+import { InitState } from '../../store/types';
 
-export const Modal = () => {
-  const allUsers = useSelector((store) => store.users);
-  const toggleClass = useSelector((store) => store.toggleClass);
-  const modalClass = useSelector((store) => store.modalClass);
-  const delItemId = useSelector((store) => store.delItemId);
+export const Modal: React.FC = () => {
+  const allUsers = useSelector((store: InitState) => store.users);
+  const toggleClass = useSelector((store: InitState) => store.toggleClass);
+  const modalClass = useSelector((store: InitState) => store.modalClass);
+  const delItemId = useSelector((store: InitState) => store.delItemId);
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const delUser = (data, id) => {
+  const delUser = (data: Array<any>, id: number) => {
     const index = data.findIndex((el) => el.id === id);
     data.splice(index, 1);
     dispatch(setUsers(data));

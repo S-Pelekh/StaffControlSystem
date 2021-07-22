@@ -11,13 +11,14 @@ import {
   setModalClass,
   setDelItemId,
 } from '../../store/actions';
+import { IUser, InitState } from '../../store/types';
 
-export default function UserCard(users) {
-  const [open, setOpen] = useState(false);
-  const toggleClass = useSelector((store) => store.toggleClass);
-  const modalClass = useSelector((store) => store.modalClass);
+export default function UserCard(users: IUser) {
+  const [open, setOpen] = useState<boolean>(false);
+  const toggleClass = useSelector((store: InitState) => store.toggleClass);
+  const modalClass = useSelector((store: InitState) => store.modalClass);
   const dispatch = useDispatch();
-  const userName = users.name.split(' ');
+  const userName: string[] = users.name.split(' ');
 
   return (
     <Card className={`${open ? 'showInfo' : ''}`}>

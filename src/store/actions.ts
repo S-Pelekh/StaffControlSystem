@@ -1,3 +1,5 @@
+import { InitState } from "./types";
+
 export const SET_USERS = 'SET_USERS';
 export const SET_USER_DETAILS = 'SET_USER_DETAILS';
 export const ON_SEARCH = 'ON_SEARCH';
@@ -15,15 +17,15 @@ export const SET_USERS_SORT = 'SET_USERS_SORT';
 export const SET_TOTAL_SALARY = 'SET_TOTAL_SALARY';
 export const SET_SHOW_SALARY_CLASS = 'SET_SHOW_SALARY_CLASS';
 
-export const initialState = {
+export const initialState: InitState = {
   users: [],
-  userDetails: {},
+  userDetails: [],
   keyWords: '',
   toggleMenu: false,
-  salaryMin: '',
-  salaryMax: '',
+  salaryMin: 0,
+  salaryMax: 0,
   toggleClass: false,
-  delItemId: '',
+  delItemId:0,
   modalClass: false,
   showSalaryClass: false,
   itemsPerPage: 6,
@@ -33,62 +35,62 @@ export const initialState = {
   usersSort: false,
   totalSalary: 0,
 };
-export const setUsers = (data) => ({ type: SET_USERS, payload: data });
-export const setSalaryMin = (count) => ({
+export const setUsers = (data: any) => ({ type: SET_USERS, payload: data });
+export const setSalaryMin = (count: number) => ({
   type: SET_SALARY_MIN,
   payload: count,
 });
-export const setSalaryMax = (count) => ({
+export const setSalaryMax = (count: number) => ({
   type: SET_SALARY_MAX,
   payload: count,
 });
-export const setDelItemId = (count) => ({
+export const setDelItemId = (count: number) => ({
   type: SET_DEL_ITEM_ID,
   payload: count,
 });
-export const setItemsPerPage = (count) => ({
+export const setItemsPerPage = (count: number) => ({
   type: SET_ITEMS_PER_PAGE,
   payload: count,
 });
-export const onSearch = (str) => ({
+export const onSearch = (str: string) => ({
   type: ON_SEARCH,
   payload: str,
 });
-export const setWorkStatus = (str) => ({
+export const setWorkStatus = (str: string) => ({
   type: SET_WORK_STATUS,
   payload: str,
 });
-export const setVacationStatus = (str) => ({
+export const setVacationStatus = (str: string) => ({
   type: SET_VACATION_STATUS,
   payload: str,
 });
-export const setFiredStatus = (str) => ({
+export const setFiredStatus = (str: string) => ({
   type: SET_FIRED_STATUS,
   payload: str,
 });
-export const setToggleMenu = (val) => ({ type: SET_TOGGLE_MENU, payload: val });
-export const setToggleClass = (val) => ({
+export const setToggleMenu = (val: boolean) => ({ type: SET_TOGGLE_MENU, payload: val });
+export const setToggleClass = (val: boolean) => ({
   type: SET_TOGGLE_CLASS,
   payload: val,
 });
-export const setModalClass = (val) => ({
+export const setModalClass = (val: boolean) => ({
   type: SET_MODAL_CLASS,
   payload: val,
 });
-export const setShowSalaryClass = (val) => ({
+export const setShowSalaryClass = (val: boolean) => ({
   type: SET_SHOW_SALARY_CLASS,
   payload: val,
 });
 
-export const setUsersSort = (val) => ({
+export const setUsersSort = (val: boolean) => ({
   type: SET_USERS_SORT,
   payload: val,
 });
-export const setUserDetails = (id, details) => ({
+export const setUserDetails = (id: number, details: any) => ({
   type: SET_USER_DETAILS,
   payload: { id, details },
 });
-export const setTotalSalary = (count) => ({
+export const setTotalSalary = (count: number) => ({
   type: SET_TOTAL_SALARY,
   payload: count,
 });

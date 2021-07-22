@@ -4,7 +4,7 @@ import { setTotalSalary, setShowSalaryClass } from '../../store/actions';
 import { useTranslation } from 'react-i18next';
 
 import { Button } from '../ui-kit/styled';
-import { StyledCalc } from '../salaryCalc/styled';
+import { StyledCalc } from './styled';
 
 export const SalaryCalc = () => {
   const users = useSelector((store) => store.users);

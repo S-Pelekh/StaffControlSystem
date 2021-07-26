@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import { useSelector } from 'react-redux';
 
 import UserCard from '../UserCard';
@@ -7,7 +7,7 @@ import useDebounce from '../../hooks/useDebounce/index';
 import { InitState, IUser } from '../../store/types';
 
 
-export default function RenderUsers(): any{
+export default function RenderUsers(): ReactElement{
   const users = useSelector((store: InitState) => store.users);
   const keyWords = useSelector((store: InitState) => store.keyWords);
   const salaryMin = useSelector((store: InitState) => store.salaryMin);
@@ -57,10 +57,10 @@ export default function RenderUsers(): any{
         )
         .slice(0, itemsPerPage);
 
-  return portion.map((portion) => (
-    <React.Fragment key={`user-${portion.id}`}>
+  return  ( <React.Fragment>{portion.map((portion) => (
+    <div key={`user-${portion.id}`}>
       <EmtyCard />
       <UserCard key={`user-${portion.id}`} {...portion} />
-    </React.Fragment>
-  ));
+    </div>  ))}</React.Fragment>)
+  
 }

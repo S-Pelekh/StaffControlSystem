@@ -19,18 +19,19 @@ import { Modal } from '../../components/modal';
 import { UsersSort } from '../../components/usersSort';
 import { SalaryModal } from '../../components/salaryModal';
 import { useTranslation } from 'react-i18next';
+import { InitState } from '../../store/types';
 
 export const MainPage = () => {
-  const totalUsers = useSelector((store) => store.users.length);
-  const toggleClass = useSelector((store) => store.toggleClass);
-  const modalClass = useSelector((store) => store.modalClass);
-  const showSalaryClass = useSelector((store) => store.showSalaryClass);
-  const toggleMenu = useSelector((store) => store.toggleMenu);
-  const itemsPerPage = useSelector((store) => store.itemsPerPage);
+  const totalUsers = useSelector((store: InitState) => store.users.length);
+  const toggleClass = useSelector((store: InitState) => store.toggleClass);
+  const modalClass = useSelector((store: InitState) => store.modalClass);
+  const showSalaryClass = useSelector((store: InitState) => store.showSalaryClass);
+  const toggleMenu = useSelector((store: InitState) => store.toggleMenu);
+  const itemsPerPage = useSelector((store: InitState) => store.itemsPerPage);
   const dispatch = useDispatch();
   const fetch = bindActionCreators(onGetUsers, dispatch);
   const { t, i18n } = useTranslation();
-  const changeLanguage = (language) => i18n.changeLanguage(language);
+  const changeLanguage = (language: string) => i18n.changeLanguage(language);
 
   useEffect(() => {
     fetch();
@@ -63,7 +64,7 @@ export const MainPage = () => {
       </div>
 
       <div className="usersBlock">
-        <RenderUsers />
+        <RenderUsers/>
         <EmtyCard />
         <EmtyCard />
       </div>

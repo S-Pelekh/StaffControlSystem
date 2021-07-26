@@ -4,17 +4,19 @@ import { useSelector } from 'react-redux';
 import UserCard from '../UserCard';
 import { EmtyCard } from '../ui-kit/styled';
 import useDebounce from '../../hooks/useDebounce/index';
+import { InitState, IUser } from '../../store/types';
 
-export default function RenderUsers() {
-  const users = useSelector((store) => store.users);
-  const keyWords = useSelector((store) => store.keyWords);
-  const salaryMin = useSelector((store) => store.salaryMin);
-  const salaryMax = useSelector((store) => store.salaryMax);
-  const itemsPerPage = useSelector((store) => store.itemsPerPage);
-  const workStatus = useSelector((store) => store.workStatus);
-  const vacationStatus = useSelector((store) => store.vacationStatus);
-  const firedStatus = useSelector((store) => store.firedStatus);
-  const usersSort = useSelector((store) => store.usersSort);
+
+export default function RenderUsers(): any{
+  const users = useSelector((store: InitState) => store.users);
+  const keyWords = useSelector((store: InitState) => store.keyWords);
+  const salaryMin = useSelector((store: InitState) => store.salaryMin);
+  const salaryMax = useSelector((store: InitState) => store.salaryMax);
+  const itemsPerPage = useSelector((store: InitState) => store.itemsPerPage);
+  const workStatus = useSelector((store: InitState) => store.workStatus);
+  const vacationStatus = useSelector((store: InitState) => store.vacationStatus);
+  const firedStatus = useSelector((store: InitState) => store.firedStatus);
+  const usersSort = useSelector((store: InitState) => store.usersSort);
   const searchWords = useDebounce(keyWords, 500);
   const usersSorted = usersSort
     ? [...users].sort((a, b) => (a.name >= b.name ? 1 : -1))
@@ -29,11 +31,12 @@ export default function RenderUsers() {
   const firedPortion = [...usersSorted].filter((el) =>
     firedStatus ? el.status.toLowerCase().includes(firedStatus) : false,
   );
-  const statusSorted = []
-    .concat(workPortion)
+  const statusSorted: IUser[]=[] ;
+
+    statusSorted.concat(workPortion)
     .concat(vacationPortion)
     .concat(firedPortion);
-  const portion = statusSorted.length
+  const portion: IUser[] = statusSorted.length
     ? [...statusSorted]
         .filter((el) => el.name.toLowerCase().includes(keyWords.toLowerCase()))
 
@@ -55,9 +58,9 @@ export default function RenderUsers() {
         .slice(0, itemsPerPage);
 
   return portion.map((portion) => (
-    <div key={`user-${portion.id}`}>
+    <React.Fragment key={`user-${portion.id}`}>
       <EmtyCard />
       <UserCard key={`user-${portion.id}`} {...portion} />
-    </div>
+    </React.Fragment>
   ));
 }

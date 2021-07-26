@@ -31,12 +31,12 @@ export default function RenderUsers(): ReactElement{
   const firedPortion = [...usersSorted].filter((el) =>
     firedStatus ? el.status.toLowerCase().includes(firedStatus) : false,
   );
-  const statusSorted: IUser[]=[] ;
 
-    statusSorted.concat(workPortion)
+  const _statusSorted: IUser[]=[] 
+  const statusSorted = _statusSorted.concat(workPortion)
     .concat(vacationPortion)
     .concat(firedPortion);
-  const portion: IUser[] = statusSorted.length
+  const portion: any[] = statusSorted.length
     ? [...statusSorted]
         .filter((el) => el.name.toLowerCase().includes(keyWords.toLowerCase()))
 

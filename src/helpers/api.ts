@@ -1,7 +1,7 @@
 export default class Api {
-  static url = `http://localhost:3001`;
+  static url: string = `http://localhost:3001`;
 
-  static request = (status, link, options) => {
+  static request = (status: number, link: string, options?: object) => {
     return new Promise(async (res, rej) => {
       const result = await fetch(link, options);
       if (result.status === status) {
@@ -12,12 +12,12 @@ export default class Api {
     });
   };
 
-  static getPeople = () => this.request(200, `${Api.url}/people`);
+  static getPeople = () => Api.request(200, `${Api.url}/people`);
 
-  static getUserDetails = (id) => this.request(200, `${Api.url}/people/${id}`);
+  static getUserDetails = (id: number) => Api.request(200, `${Api.url}/people/${id}`);
 
-  static setNewUser = (data) =>
-    this.request(201, `${Api.url}/people`, {
+  static setNewUser = (data: any[]) =>
+    Api.request(201, `${Api.url}/people`, {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -25,8 +25,8 @@ export default class Api {
       },
     });
 
-  static editUser = (data, id) =>
-    this.request(200, `${Api.url}/people/${id}`, {
+  static editUser = (data: any[], id: number) =>
+    Api.request(200, `${Api.url}/people/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(data),
       headers: {
@@ -34,8 +34,8 @@ export default class Api {
       },
     });
 
-  static removeUser = (id) =>
-    this.request(200, `${Api.url}/people/${id}`, {
+  static removeUser = (id: number) =>
+    Api.request(200, `${Api.url}/people/${id}`, {
       method: 'DELETE',
     });
 }

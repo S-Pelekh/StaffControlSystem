@@ -8,7 +8,7 @@ import { SortStyle } from './styled';
 import { InitState } from '../../store/types';
 
 export const UsersSort: React.FC = () => {
-  const usersSort = useSelector((store: InitState) => store.usersSort);
+  const usersSort = useSelector<InitState, boolean>((store) => store.usersSort);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   return (

@@ -8,9 +8,9 @@ import { Button } from '../ui-kit/styled';
 import { StyledCalc } from './styled';
 
 export const SalaryCalc = () => {
-  const users = useSelector((store: InitState) => store.users);
-  const showSalaryClass = useSelector((store: InitState) => store.showSalaryClass);
-  const toggleMenu = useSelector((store: InitState) => store.toggleMenu);
+  const users = useSelector<InitState, IUser[]>((store) => store.users);
+  const showSalaryClass = useSelector<InitState, boolean>((store) => store.showSalaryClass);
+  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const workPortion: IUser[] = [...users].filter((el) =>

@@ -7,8 +7,8 @@ import { setShowSalaryClass } from '../../store/actions';
 import { InitState } from '../../store/types';
 
 export const SalaryModal: React.FC = () => {
-  const showSalaryClass = useSelector((store: InitState) => store.showSalaryClass);
-  const totalSalary = useSelector((store: InitState) => store.totalSalary);
+  const showSalaryClass = useSelector<InitState, boolean>((store) => store.showSalaryClass);
+  const totalSalary = useSelector<InitState, number>((store) => store.totalSalary);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

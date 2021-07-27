@@ -8,7 +8,7 @@ import { onSearch } from '../../store/actions';
 import { InitState } from '../../store/types';
 
 export default function SearchInput() {
-  const keyWords = useSelector((store: InitState) => store.keyWords);
+  const keyWords = useSelector<InitState, string>((store) => store.keyWords);
   const dispatch = useDispatch();
   const { t } = useTranslation();
 

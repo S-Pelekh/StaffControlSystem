@@ -12,10 +12,10 @@ import { InitState } from '../../store/types';
 
 export const StatusFilter:React.FC = () => {
   const dispatch = useDispatch();
-  const workStatus = useSelector((store: InitState) => store.workStatus);
-  const vacationStatus = useSelector((store:InitState) => store.vacationStatus);
-  const firedStatus = useSelector((store:InitState) => store.firedStatus);
-  const toggleMenu = useSelector((store: InitState) => store.toggleMenu);
+  const workStatus = useSelector<InitState, string>((store) => store.workStatus);
+  const vacationStatus = useSelector<InitState, string>((store) => store.vacationStatus);
+  const firedStatus = useSelector<InitState, string>((store) => store.firedStatus);
+  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
   const { t } = useTranslation();
 
   return (

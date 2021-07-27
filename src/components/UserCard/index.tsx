@@ -15,8 +15,8 @@ import { IUser, InitState } from '../../store/types';
 
 export default function UserCard(users: IUser) {
   const [open, setOpen] = useState<boolean>(false);
-  const toggleClass = useSelector((store: InitState) => store.toggleClass);
-  const modalClass = useSelector((store: InitState) => store.modalClass);
+  const toggleClass = useSelector<InitState, boolean>((store) => store.toggleClass);
+  const modalClass = useSelector<InitState, boolean>((store) => store.modalClass);
   const dispatch = useDispatch();
   const userName: string[] = users.name.split(' ');
 

@@ -8,7 +8,7 @@ import { SalaryStyled } from './styled';
 import { InitState } from '../../store/types';
 
 export const SalaryFilter: React.FC = () => {
-  const toggleMenu = useSelector((store:InitState) => store.toggleMenu);
+  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
   const dispatch = useDispatch();
   const { t } = useTranslation();
   return (

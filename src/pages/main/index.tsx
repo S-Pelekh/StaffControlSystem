@@ -22,12 +22,12 @@ import { useTranslation } from 'react-i18next';
 import { InitState } from '../../store/types';
 
 export const MainPage = () => {
-  const totalUsers = useSelector((store: InitState) => store.users.length);
-  const toggleClass = useSelector((store: InitState) => store.toggleClass);
-  const modalClass = useSelector((store: InitState) => store.modalClass);
-  const showSalaryClass = useSelector((store: InitState) => store.showSalaryClass);
-  const toggleMenu = useSelector((store: InitState) => store.toggleMenu);
-  const itemsPerPage = useSelector((store: InitState) => store.itemsPerPage);
+  const totalUsers = useSelector<InitState, number>((store) => store.users.length);
+  const toggleClass = useSelector<InitState, boolean>((store) => store.toggleClass);
+  const modalClass = useSelector<InitState, boolean>((store) => store.modalClass);
+  const showSalaryClass = useSelector<InitState, boolean>((store) => store.showSalaryClass);
+  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
+  const itemsPerPage = useSelector<InitState, number>((store) => store.itemsPerPage);
   const dispatch = useDispatch();
   const fetch = bindActionCreators(onGetUsers, dispatch);
   const { t, i18n } = useTranslation();

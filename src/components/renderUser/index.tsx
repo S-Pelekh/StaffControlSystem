@@ -8,15 +8,15 @@ import { InitState, IUser } from '../../store/types';
 
 
 export default function RenderUsers(): ReactElement{
-  const users = useSelector((store: InitState) => store.users);
-  const keyWords = useSelector((store: InitState) => store.keyWords);
-  const salaryMin = useSelector((store: InitState) => store.salaryMin);
-  const salaryMax = useSelector((store: InitState) => store.salaryMax);
-  const itemsPerPage = useSelector((store: InitState) => store.itemsPerPage);
-  const workStatus = useSelector((store: InitState) => store.workStatus);
-  const vacationStatus = useSelector((store: InitState) => store.vacationStatus);
-  const firedStatus = useSelector((store: InitState) => store.firedStatus);
-  const usersSort = useSelector((store: InitState) => store.usersSort);
+  const users = useSelector<InitState, IUser[]>((store) => store.users);
+  const keyWords = useSelector<InitState, string>((store) => store.keyWords);
+  const salaryMin = useSelector<InitState, number>((store) => store.salaryMin);
+  const salaryMax = useSelector<InitState, number>((store) => store.salaryMax);
+  const itemsPerPage = useSelector<InitState, number>((store) => store.itemsPerPage);
+  const workStatus = useSelector<InitState, string>((store) => store.workStatus);
+  const vacationStatus = useSelector<InitState, string>((store) => store.vacationStatus);
+  const firedStatus = useSelector<InitState, string>((store) => store.firedStatus);
+  const usersSort = useSelector<InitState, boolean>((store: InitState) => store.usersSort);
   const searchWords = useDebounce(keyWords, 500);
   const usersSorted = usersSort
     ? [...users].sort((a, b) => (a.name >= b.name ? 1 : -1))

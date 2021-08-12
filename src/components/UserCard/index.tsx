@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import moment from 'moment';
 import { Card } from '../renderUser/styled';
@@ -11,13 +10,14 @@ import {
   setModalClass,
   setDelItemId,
 } from '../../store/actions';
-import { IUser, InitState } from '../../store/types';
+import { IUser } from '../../store/types';
+import { useAppDispatch, useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export default function UserCard(users: IUser) {
   const [open, setOpen] = useState<boolean>(false);
-  const toggleClass = useSelector<InitState, boolean>((store) => store.toggleClass);
-  const modalClass = useSelector<InitState, boolean>((store) => store.modalClass);
-  const dispatch = useDispatch();
+  const toggleClass = useAppSelector(store => store.toggleClass);
+  const modalClass = useAppSelector(store => store.modalClass);
+  const dispatch = useAppDispatch();
   const userName: string[] = users.name.split(' ');
 
   return (
@@ -33,7 +33,7 @@ export default function UserCard(users: IUser) {
             onClick={() => {
               dispatch(setToggleClass(!toggleClass));
               dispatch(setModalClass(!modalClass));
-              dispatch(setDelItemId(users.id));
+              dispatch(setDelItemId(users.id!));
             }}>
             <DelIcon />
           </div>

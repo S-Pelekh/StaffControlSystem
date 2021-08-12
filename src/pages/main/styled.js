@@ -63,7 +63,7 @@ export const Main = styled.section`
       }
     }
     .userInfo {
-      width: 322x;
+      width: 322px;
       height: 652px;
 
       .usernameBlock {

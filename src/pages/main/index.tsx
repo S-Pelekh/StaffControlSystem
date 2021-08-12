@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { setItemsPerPage, setToggleMenu } from '../../store/actions';
@@ -8,8 +8,8 @@ import { Main } from './styled';
 import { bindActionCreators } from 'redux';
 import RenderUsers from '../../components/renderUser/index';
 import SearchInput from '../../components/searchInput/index';
-import { SalaryFilter } from '../../components/salaryFilter/index';
-import { StatusFilter } from '../../components/statusFilter/index';
+import { SalaryFilter } from '../../components/salaryFilter';
+import { StatusFilter } from '../../components/statusFilter';
 import { SalaryCalc } from '../../components/salaryCalc';
 import { Button } from '../../components/ui-kit/styled';
 import { ReactComponent as CrossIcon } from '../../assets/cross.svg';
@@ -19,15 +19,15 @@ import { Modal } from '../../components/modal';
 import { UsersSort } from '../../components/usersSort';
 import { SalaryModal } from '../../components/salaryModal';
 import { useTranslation } from 'react-i18next';
-import { InitState } from '../../store/types';
+import { useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export const MainPage = () => {
-  const totalUsers = useSelector<InitState, number>((store) => store.users.length);
-  const toggleClass = useSelector<InitState, boolean>((store) => store.toggleClass);
-  const modalClass = useSelector<InitState, boolean>((store) => store.modalClass);
-  const showSalaryClass = useSelector<InitState, boolean>((store) => store.showSalaryClass);
-  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
-  const itemsPerPage = useSelector<InitState, number>((store) => store.itemsPerPage);
+  const totalUsers = useAppSelector(store => store.users.length);
+  const toggleClass = useAppSelector(store => store.toggleClass);
+  const modalClass = useAppSelector(store => store.modalClass);
+  const showSalaryClass = useAppSelector(store => store.showSalaryClass);
+  const toggleMenu = useAppSelector(store => store.toggleMenu);
+  const itemsPerPage = useAppSelector(store => store.itemsPerPage);
   const dispatch = useDispatch();
   const fetch = bindActionCreators(onGetUsers, dispatch);
   const { t, i18n } = useTranslation();
@@ -60,7 +60,7 @@ export const MainPage = () => {
         </div>
         <UsersSort />
         <MenuIcon onClick={() => dispatch(setToggleMenu(!toggleMenu))} />
-        <div className={`menu-panel ${toggleMenu ? 'showMenu' : ''}`}></div>
+        <div className={`menu-panel ${toggleMenu ? 'showMenu' : ''}`}/>
       </div>
 
       <div className="usersBlock">
@@ -85,7 +85,7 @@ export const MainPage = () => {
           {t('main.showMore')}
         </div>
       ) : (
-        <div></div>
+        <div/>
       )}
       <div className="langBlock">
         <button onClick={() => changeLanguage('en')}>En</button>

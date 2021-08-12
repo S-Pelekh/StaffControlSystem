@@ -1,7 +1,9 @@
+import { IUser } from "../store/types";
+
 export default class Api {
   static url: string = `http://localhost:3001`;
 
-  static request = (status: number, link: string, options?: object) => {
+  static request = (status: number, link: string, options?: object): Promise<Array<IUser>> => {
     return new Promise(async (res, rej) => {
       const result = await fetch(link, options);
       if (result.status === status) {
@@ -16,7 +18,7 @@ export default class Api {
 
   static getUserDetails = (id: number) => Api.request(200, `${Api.url}/people/${id}`);
 
-  static setNewUser = (data: any[]) =>
+  static setNewUser = (data: IUser) =>
     Api.request(201, `${Api.url}/people`, {
       method: 'POST',
       body: JSON.stringify(data),
@@ -25,7 +27,7 @@ export default class Api {
       },
     });
 
-  static editUser = (data: any[], id: number) =>
+  static editUser = (data: IUser, id: number) =>
     Api.request(200, `${Api.url}/people/${id}`, {
       method: 'PATCH',
       body: JSON.stringify(data),

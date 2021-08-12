@@ -1,22 +1,22 @@
 import React, { ReactElement } from 'react';
-import { useSelector } from 'react-redux';
 
 import UserCard from '../UserCard';
 import { EmtyCard } from '../ui-kit/styled';
 import useDebounce from '../../hooks/useDebounce/index';
-import { InitState, IUser } from '../../store/types';
+import { IUser } from '../../store/types';
+import { useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 
 export default function RenderUsers(): ReactElement{
-  const users = useSelector<InitState, IUser[]>((store) => store.users);
-  const keyWords = useSelector<InitState, string>((store) => store.keyWords);
-  const salaryMin = useSelector<InitState, number>((store) => store.salaryMin);
-  const salaryMax = useSelector<InitState, number>((store) => store.salaryMax);
-  const itemsPerPage = useSelector<InitState, number>((store) => store.itemsPerPage);
-  const workStatus = useSelector<InitState, string>((store) => store.workStatus);
-  const vacationStatus = useSelector<InitState, string>((store) => store.vacationStatus);
-  const firedStatus = useSelector<InitState, string>((store) => store.firedStatus);
-  const usersSort = useSelector<InitState, boolean>((store: InitState) => store.usersSort);
+  const users = useAppSelector(store => store.users);
+  const keyWords = useAppSelector(store => store.keyWords);
+  const salaryMin = useAppSelector(store => store.salaryMin);
+  const salaryMax = useAppSelector(store => store.salaryMax);
+  const itemsPerPage = useAppSelector(store => store.itemsPerPage);
+  const workStatus = useAppSelector(store => store.workStatus);
+  const vacationStatus = useAppSelector(store=> store.vacationStatus);
+  const firedStatus = useAppSelector(store => store.firedStatus);
+  const usersSort = useAppSelector(store => store.usersSort);
   const searchWords = useDebounce(keyWords, 500);
   const usersSorted = usersSort
     ? [...users].sort((a, b) => (a.name >= b.name ? 1 : -1))

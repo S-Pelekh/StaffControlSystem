@@ -8,6 +8,7 @@ import { onSetNewUser } from '../../store/thunks';
 import { FormStyle } from './styled';
 import { Button } from '../ui-kit/styled';
 import { ReactComponent as BackIcon } from '../../assets/back.svg';
+import { IUser } from '../../store/types';
 
 
 const SignupSchema = Yup.object().shape({
@@ -39,13 +40,13 @@ export const RegForm: React.FC = () => {
           name: '',
           photo: '',
           position: '',
-          salary: '',
+          salary: 0,
           status: '',
           entryDate: '',
         }}
         validateOnBlur
         validationSchema={SignupSchema}
-        onSubmit={(values) => {
+        onSubmit={(values: IUser) => {
           onSetNewUser(values);
         }}>
         {({ errors, touched, isSubmitting }) => (

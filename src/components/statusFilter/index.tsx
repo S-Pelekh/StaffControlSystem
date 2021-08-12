@@ -1,5 +1,4 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import {
@@ -8,14 +7,14 @@ import {
   setFiredStatus,
 } from '../../store/actions';
 import { StyledFilter } from './styled';
-import { InitState } from '../../store/types';
+import { useAppDispatch, useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export const StatusFilter:React.FC = () => {
-  const dispatch = useDispatch();
-  const workStatus = useSelector<InitState, string>((store) => store.workStatus);
-  const vacationStatus = useSelector<InitState, string>((store) => store.vacationStatus);
-  const firedStatus = useSelector<InitState, string>((store) => store.firedStatus);
-  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
+  const dispatch = useAppDispatch();
+  const workStatus = useAppSelector(store => store.workStatus);
+  const vacationStatus = useAppSelector(store => store.vacationStatus);
+  const firedStatus = useAppSelector(store => store.firedStatus);
+  const toggleMenu = useAppSelector(store => store.toggleMenu);
   const { t } = useTranslation();
 
   return (

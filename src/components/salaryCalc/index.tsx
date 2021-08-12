@@ -1,17 +1,17 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { setTotalSalary, setShowSalaryClass } from '../../store/actions';
 import { useTranslation } from 'react-i18next';
-import { IUser, InitState } from '../../store/types';
+import { IUser } from '../../store/types';
 
 import { Button } from '../ui-kit/styled';
 import { StyledCalc } from './styled';
+import { useAppDispatch, useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export const SalaryCalc = () => {
-  const users = useSelector<InitState, IUser[]>((store) => store.users);
-  const showSalaryClass = useSelector<InitState, boolean>((store) => store.showSalaryClass);
-  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
-  const dispatch = useDispatch();
+  const users = useAppSelector(store => store.users);
+  const showSalaryClass = useAppSelector(store => store.showSalaryClass);
+  const toggleMenu = useAppSelector(store=> store.toggleMenu);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   const workPortion: IUser[] = [...users].filter((el) =>
     el.status.toLowerCase().includes('work'),

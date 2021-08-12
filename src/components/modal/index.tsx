@@ -6,9 +6,10 @@ import { StyledModal, Button } from '../ui-kit/styled';
 import { setToggleClass, setModalClass, setUsers } from '../../store/actions';
 import { onRemoveUser } from '../../store/thunks';
 import { InitState, IUser } from '../../store/types';
+import { useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export const Modal: React.FC = () => {
-  const allUsers = useSelector<InitState, IUser[]>((store) => store.users);
+  const allUsers = useAppSelector(store => store.users);
   const toggleClass = useSelector<InitState, boolean>((store) => store.toggleClass);
   const modalClass = useSelector<InitState, boolean>((store) => store.modalClass);
   const delItemId = useSelector<InitState, number>((store) => store.delItemId);

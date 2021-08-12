@@ -1,15 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { StyledModal, Button } from '../ui-kit/styled';
 import { setShowSalaryClass } from '../../store/actions';
-import { InitState } from '../../store/types';
+import { useAppDispatch, useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export const SalaryModal: React.FC = () => {
-  const showSalaryClass = useSelector<InitState, boolean>((store) => store.showSalaryClass);
-  const totalSalary = useSelector<InitState, number>((store) => store.totalSalary);
-  const dispatch = useDispatch();
+  const showSalaryClass = useAppSelector(store => store.showSalaryClass);
+  const totalSalary = useAppSelector(store => store.totalSalary);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
 
   return (

@@ -1,15 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 
 import { Formik, Field, Form } from 'formik';
 import { setSalaryMin, setSalaryMax } from '../../store/actions';
 import { SalaryStyled } from './styled';
-import { InitState } from '../../store/types';
+import { useAppDispatch, useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 export const SalaryFilter: React.FC = () => {
-  const toggleMenu = useSelector<InitState, boolean>((store) => store.toggleMenu);
-  const dispatch = useDispatch();
+  const toggleMenu = useAppSelector(store => store.toggleMenu);
+  const dispatch = useAppDispatch();
   const { t } = useTranslation();
   return (
     <SalaryStyled className={`${toggleMenu ? 'showFilter' : ''}`}>
@@ -24,8 +23,8 @@ export const SalaryFilter: React.FC = () => {
           dispatch(setSalaryMax(values.salaryMax));
         }}>
         <Form>
-          <Field name="salaryMin" type="number" placeholder="ОТ"></Field>
-          <Field name="salaryMax" type="number" placeholder="ДО"></Field>
+          <Field name='salaryMin' type='number' placeholder='ОТ'/>
+          <Field name='salaryMax' type='number' placeholder='ДО'/>
           <button type="submit">ok</button>
         </Form>
       </Formik>

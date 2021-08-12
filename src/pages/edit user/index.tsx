@@ -13,6 +13,7 @@ import { EditUserStyle } from './styled';
 import { Button } from '../../components/ui-kit/styled.js';
 import { ReactComponent as BackIcon } from '../../assets/back.svg';
 import {  InitState, IUser } from '../../store/types';
+import { useAppSelector } from '../../hooks/Store Hooks/hooks';
 
 const SignupSchema = Yup.object().shape({
   name: Yup.string()
@@ -32,7 +33,7 @@ const SignupSchema = Yup.object().shape({
 
 export const EditUser = () => {
 
-  const userDetails = useSelector<InitState, IUser[]>((store) => store.userDetails);
+  const userDetails = useAppSelector(store => store.userDetails);
   const dispatch = useDispatch();
   const params = useParams()
   console.log(params)
@@ -60,15 +61,15 @@ export const EditUser = () => {
               name: `${name}`,
               photo: `${photo}`,
               position: `${position}`,
-              salary: `${salary}`,
+              salary: salary,
               status: `${status}`,
               entryDate: `${entryDate}`,
             }}
             validateOnBlur
             validationSchema={SignupSchema}
-            onSubmit={(values) => {
+            onSubmit={(values: IUser) => {
               onEditUser(values, +id);
-              dispatch(setUserDetails(+id, values));
+              dispatch(setUserDetails(+id, [values]));
             }}>
             {({ errors, touched, isSubmitting }) => (
               <Form>
